@@ -572,14 +572,14 @@ mdc: true
     <h2>MCP — Model Context Protocol</h2>
   <p style="margin-top: 16px;">Giao thức kết nối tools ngoài.</p>
   <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 32px;">
-    <div class="badge-pill" style="text-align: center; padding: 12px;">GitHub</div>
-    <div class="badge-pill" style="text-align: center; padding: 12px;">Postgres</div>
-    <div class="badge-pill" style="text-align: center; padding: 12px;">Slack</div>
-    <div class="badge-pill" style="text-align: center; padding: 12px;">Linear</div>
-    <div class="badge-pill" style="text-align: center; padding: 12px;">Jira</div>
-    <div class="badge-pill" style="text-align: center; padding: 12px;">Sentry</div>
-    <div class="badge-pill" style="text-align: center; padding: 12px;">Figma</div>
-    <div class="badge-pill" style="text-align: center; padding: 12px;">Playwright</div>
+    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;"><img src="https://cdn.simpleicons.org/github/141413" alt="" style="height: 16px; width: 16px;" />GitHub</div>
+    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;"><img src="https://cdn.simpleicons.org/postgresql/141413" alt="" style="height: 16px; width: 16px;" />Postgres</div>
+    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;">💬 Slack</div>
+    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;"><img src="https://cdn.simpleicons.org/linear/141413" alt="" style="height: 16px; width: 16px;" />Linear</div>
+    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;"><img src="https://cdn.simpleicons.org/jira/141413" alt="" style="height: 16px; width: 16px;" />Jira</div>
+    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;"><img src="https://cdn.simpleicons.org/sentry/141413" alt="" style="height: 16px; width: 16px;" />Sentry</div>
+    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;"><img src="https://cdn.simpleicons.org/figma/141413" alt="" style="height: 16px; width: 16px;" />Figma</div>
+    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;">▶ Playwright</div>
   </div>
   <ul style="margin-top: 32px;">
     <li>Mỗi server ăn 5-10K tokens schema</li>
