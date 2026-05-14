@@ -357,11 +357,12 @@ mdc: true
         <li>Commands hay dùng</li>
         <li>Gotchas</li>
       </ul>
-      <h4 style="margin-top: 24px;">Quy tắc độ dài</h4>
+      <h4 style="margin-top: 24px;">Best practices (Anthropic)</h4>
       <ul style="margin-top: 8px;">
-        <li>&lt; 500 dòng: follow consistently</li>
-        <li>&gt; 1000 dòng: bị ignore dần</li>
-        <li>Compliance ~80% — vẫn cần verify</li>
+        <li>Target <strong>&lt; 200 dòng</strong> / file</li>
+        <li>Specific &gt; vague: <em>"2-space indent"</em>, không <em>"format nicely"</em></li>
+        <li>4 scope: managed · user · project · local</li>
+        <li><code>/init</code> generate · <code>/memory</code> audit</li>
       </ul>
     </div>
     <div class="code-window">
@@ -373,18 +374,42 @@ mdc: true
 
 ---
 
-<!-- SLIDE 16 — CLAUDE.md EVOLVES -->
+<!-- SLIDE 16 — CLAUDE.md + AUTO MEMORY -->
 
 <div class="slidev-layout">
-    <h2>CLAUDE.md sống theo thời gian</h2>
-  <ul style="margin-top: 24px;">
-    <li>Claude sai → bảo: <em>"Update CLAUDE.md để lần sau không lặp lại."</em></li>
-    <li>Cuối session: <em>"Bạn học được gì?"</em></li>
-    <li>Save: Concept → CLAUDE.md · Convention → rules · Technical → skill file</li>
-    <li><strong>Commit CLAUDE.md vào git</strong> — team chia sẻ knowledge</li>
-  </ul>
-  <div style="margin-top: 32px;" class="callout-coral">
-    <strong>Pattern:</strong> Self-improving project memory — mỗi correction = rule mới, tích lũy theo project.
+    <h2>CLAUDE.md + Auto Memory</h2>
+  <p style="margin-top: 12px; color: var(--c-muted); font-size: 14px;">2 hệ bộ nhớ load mỗi session — official Anthropic docs.</p>
+  <table style="margin-top: 20px;">
+    <thead>
+      <tr><th></th><th>CLAUDE.md</th><th>Auto memory</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Ai viết</strong></td><td>Bạn</td><td>Claude</td></tr>
+      <tr><td><strong>Nội dung</strong></td><td>Instructions + rules</td><td>Learnings + patterns</td></tr>
+      <tr><td><strong>Scope</strong></td><td>Project · user · org</td><td>Per repo (shared worktrees)</td></tr>
+      <tr><td><strong>Load</strong></td><td>Full mỗi session</td><td>First 200 lines / 25KB</td></tr>
+      <tr><td><strong>Dùng cho</strong></td><td>Coding standards, workflow, architecture</td><td>Build commands, debug insights, preferences</td></tr>
+    </tbody>
+  </table>
+  <div style="margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+    <div class="feature-card" style="padding: 14px;">
+      <h4 style="font-size: 14px;">Khi nào add vào CLAUDE.md</h4>
+      <ul style="margin-top: 6px; font-size: 13px;">
+        <li>Claude sai cùng lỗi lần 2</li>
+        <li>Code review bắt thứ Claude phải biết</li>
+        <li>Gõ lại cùng correction</li>
+        <li>Onboard teammate mới cần cùng context</li>
+      </ul>
+    </div>
+    <div class="feature-card" style="padding: 14px;">
+      <h4 style="font-size: 14px;">Best practices</h4>
+      <ul style="margin-top: 6px; font-size: 13px;">
+        <li><strong>&lt; 200 dòng</strong> / file</li>
+        <li>Cụ thể: <code>"2-space indent"</code> &gt; "format properly"</li>
+        <li><code>/init</code> generate, <code>/memory</code> audit</li>
+        <li><strong>Commit vào git</strong> — team chia sẻ</li>
+      </ul>
+    </div>
   </div>
 </div>
 
