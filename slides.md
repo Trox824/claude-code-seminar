@@ -51,9 +51,7 @@ mdc: true
       <li>Lặp lại cùng prompt cho mỗi task tương tự</li>
       <li>Copy code vào IDE, copy lỗi quay lại chat</li>
     </ul>
-    <div class="image-placeholder">
-      [IMAGE: line-art dev tangled in copy-paste loops, coral + ink on cream — Undraw recolor]
-    </div>
+    <img src="/img/claude-code-slack.webp" alt="Claude Code multi-surface" style="width: 100%; border-radius: 12px;" />
   </div>
 </div>
 
@@ -124,7 +122,7 @@ mdc: true
       <p style="color: var(--c-on-dark-soft);">Delivery feature 24 ngày → <strong style="color: var(--c-primary);">5 ngày</strong>.</p>
     </div>
     <div class="feature-card" style="background-color: var(--c-surface-dark-elevated); color: var(--c-on-dark);">
-      <h4 style="color: var(--c-on-dark);">Ramp</h4>
+      <img src="/img/ramp-logo.svg" alt="Ramp" style="height: 24px; opacity: 0.9; margin-bottom: 12px;" />
       <p style="color: var(--c-on-dark-soft);">Incident investigation giảm <strong style="color: var(--c-primary);">80%</strong> thời gian.</p>
     </div>
   </div>
@@ -171,9 +169,7 @@ mdc: true
         "Context là tài nguyên quan trọng nhất cần quản lý." — Anthropic docs
       </p>
     </div>
-    <div class="image-placeholder">
-      [IMAGE: desk-clutter analogy diagram — cream desk surface với items piling up]
-    </div>
+    <img src="/img/claude-code-web.webp" alt="Claude Code web surface" style="width: 100%; border-radius: 12px;" />
   </div>
 </div>
 
@@ -253,9 +249,7 @@ mdc: true
       <li>Sai plan = rewrite, không patch</li>
       <li>Plan > 10 phút = quay về Bước 1</li>
     </ul>
-    <div class="image-placeholder">
-      [IMAGE: Plan Mode terminal screenshot — checklist của Claude với 5-7 steps]
-    </div>
+    <img src="/img/claude-code-terminal.webp" alt="Claude Code Plan Mode terminal" style="width: 100%; border-radius: 12px;" />
   </div>
   <p style="margin-top: 24px; color: var(--c-muted); font-size: 14px;">
     Superpowers: <code>using-plan-mode</code>, <code>subagent-driven-development</code> cho task lớn.
@@ -268,20 +262,22 @@ mdc: true
 
 <div class="slidev-layout dark">
     <h2 style="color: var(--c-on-dark);">Execute</h2>
-  <p style="margin-top: 16px; color: var(--c-on-dark-soft);">Thực thi theo plan, mỗi step một thay đổi atomic.</p>
-  <ul style="margin-top: 24px; color: var(--c-on-dark-soft);">
-    <li><strong style="color: var(--c-on-dark);">Git commit từng atomic step</strong> — checkpoint để rewind</li>
-    <li><strong style="color: var(--c-on-dark);">TDD style</strong>: test trước, code sau (domain rõ)</li>
-    <li><strong style="color: var(--c-on-dark);">@-mention file</strong> thay vì bắt agent tìm</li>
-    <li><strong style="color: var(--c-on-dark);">Permission từng bước</strong> — không full auto trên prod</li>
-    <li>Agent stuck → bảo in giả thuyết + cách verify</li>
-  </ul>
-  <div style="margin-top: 32px; background: var(--c-primary); color: var(--c-on-primary); padding: 24px; border-radius: var(--r-lg);">
-    <strong>Rule rewind > correct:</strong> Sai 1 lần → correct. 2 lần → <code style="background: rgba(0,0,0,0.2);">/rewind</code> về Bước 2 → re-plan.
+  <div style="display: grid; grid-template-columns: 3fr 2fr; gap: 32px; margin-top: 24px;">
+    <div>
+      <p style="color: var(--c-on-dark-soft);">Thực thi theo plan, mỗi step một thay đổi atomic.</p>
+      <ul style="margin-top: 16px; color: var(--c-on-dark-soft); font-size: 15px;">
+        <li><strong style="color: var(--c-on-dark);">Git commit từng atomic step</strong> — checkpoint để rewind</li>
+        <li><strong style="color: var(--c-on-dark);">TDD style</strong>: test trước, code sau</li>
+        <li><strong style="color: var(--c-on-dark);">@-mention file</strong> thay vì bắt agent tìm</li>
+        <li><strong style="color: var(--c-on-dark);">Permission từng bước</strong> — không full auto trên prod</li>
+        <li>Agent stuck → bảo in giả thuyết + cách verify</li>
+      </ul>
+      <div style="margin-top: 20px; background: var(--c-primary); color: var(--c-on-primary); padding: 16px; border-radius: var(--r-lg); font-size: 14px;">
+        <strong>Rewind > correct:</strong> Sai 2 lần → <code style="background: rgba(0,0,0,0.2);">/rewind</code> về Plan.
+      </div>
+    </div>
+    <img src="/img/claude-code-vscode.webp" alt="Claude Code VS Code" style="width: 100%; border-radius: 12px; object-fit: cover;" />
   </div>
-  <p style="margin-top: 24px; color: var(--c-on-dark-soft); font-size: 14px;">
-    Superpowers: <code>test-driven-development</code>, <code>verification-before-completion</code>, <code>root-cause-tracing</code>.
-  </p>
 </div>
 
 ---
