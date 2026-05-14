@@ -366,7 +366,7 @@ mdc: true
     </div>
     <div class="code-window">
       <div style="color: var(--c-muted-soft); font-size: 12px; margin-bottom: 12px;">CLAUDE.md</div>
-      <div v-pre style="font-family: var(--font-mono); font-size: 13px; line-height: 1.6; color: var(--c-on-dark); white-space: pre;">&#35; Project Architecture&NewLine;&NewLine;&#35;&#35; Conventions&NewLine;- TypeScript strict mode&NewLine;- Prettier · ESLint&NewLine;- Conventional commits&NewLine;&NewLine;&#35;&#35; Commands&NewLine;- pnpm dev&NewLine;- pnpm test&NewLine;- pnpm lint&NewLine;&NewLine;&#35;&#35; Gotchas&NewLine;- Migration order matters&NewLine;- Use timezone-aware dates</div>
+      <div v-pre style="font-family: var(--font-mono); font-size: 12px; line-height: 1.7; color: var(--c-on-dark);"><span style="color: var(--c-muted-soft);">&#35; Project Architecture</span><br/><br/><span style="color: var(--c-muted-soft);">&#35;&#35; Conventions</span><br/>- TypeScript strict mode<br/>- Prettier · ESLint<br/>- Conventional commits<br/><br/><span style="color: var(--c-muted-soft);">&#35;&#35; Commands</span><br/>- pnpm dev<br/>- pnpm test<br/>- pnpm lint<br/><br/><span style="color: var(--c-muted-soft);">&#35;&#35; Gotchas</span><br/>- Migration order matters<br/>- Use timezone-aware dates</div>
     </div>
   </div>
 </div>
