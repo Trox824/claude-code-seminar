@@ -1,0 +1,21 @@
+{
+  "name": "claude-code-seminar",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build --base ./",
+    "start": "serve dist -l ${PORT:-3000} -s",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.49.0",
+    "@slidev/theme-default": "^0.25.0",
+    "playwright-chromium": "^1.45.0",
+    "serve": "^14.2.0",
+    "vue": "^3.4.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
