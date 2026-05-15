@@ -81,11 +81,12 @@ mdc: true
   <ol style="font-size: 18px; line-height: 1.7; margin-top: 24px;">
     <li>Context #1 + workflow State → Plan → Execute → Test</li>
     <li>Superpowers skills toolkit</li>
-    <li>Live Demo: full cycle + Plan + Rewind</li>
+    <li>Live Demo 1: full cycle + Plan + Rewind</li>
     <li>CLAUDE.md + auto memory · Plan Mode · Rewind · Verification</li>
     <li>Context mgmt · Dumb Zone · MCP · Skills/Sub-agents/Hooks</li>
-    <li><strong>Advanced:</strong> multi-subagent · beads · /loop · /simplify · design.md · /caveman · cross-agent skills · feature factory</li>
-    <li>Live Demo: debug + E2E</li>
+    <li><strong>Advanced:</strong> multi-subagent · beads · /loop · /simplify · design.md · /caveman · cross-agent skills</li>
+    <li>Live Demo 2: implement Demo 1 plan via sub-agents</li>
+    <li>Live Demo 3: debug + E2E</li>
     <li>Mistakes · security · review · takeaways · Q&A</li>
   </ol>
 </div>
@@ -687,9 +688,9 @@ mdc: true
 
 <div class="slidev-layout coral" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
   <span class="badge-coral" style="background: var(--c-on-primary); color: var(--c-primary);">Live Demo</span>
-  <h1 style="margin-top: 24px; color: var(--c-on-primary);">Demo 3</h1>
-  <h3 style="color: var(--c-on-primary); font-size: 28px; margin-top: 16px;">Sub-agent Implementation</h3>
-  <p style="margin-top: 24px; color: var(--c-on-primary); font-size: 16px; max-width: 720px; line-height: 1.5;">Build custom sub-agent từ <code>.claude/agents/</code> → test bằng <code>/agents</code> → invoke parallel từ main agent.</p>
+  <h1 style="margin-top: 24px; color: var(--c-on-primary);">Demo 2</h1>
+  <h3 style="color: var(--c-on-primary); font-size: 28px; margin-top: 16px;">Implement Demo 1 Plan — via Sub-agents</h3>
+  <p style="margin-top: 24px; color: var(--c-on-primary); font-size: 16px; max-width: 760px; line-height: 1.5;">Lấy plan từ Demo 1 → fan-out task song song qua sub-agent (feature-dev · code-reviewer) → merge kết quả về main.</p>
   <p style="margin-top: 16px; color: var(--c-on-primary); font-size: 14px; opacity: 0.85;">~10 phút</p>
 </div>
 
@@ -915,50 +916,11 @@ mdc: true
 
 ---
 
-<!-- SLIDE A8 — AUTONOMOUS FEATURE FACTORY -->
-
-<div class="slidev-layout dark">
-  <h2 style="color: var(--c-on-dark);">Autonomous Feature Factory</h2>
-  <p style="margin-top: 4px; color: var(--c-muted-soft); font-size: 12px;">Tie A1-A7: long-horizon work với minimal human-in-loop.</p>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px;">
-    <div>
-      <ol style="color: var(--c-on-dark-soft); font-size: 13px;">
-        <li><strong style="color: var(--c-on-dark);">Spec</strong> — design.md (UI) + CLAUDE.md (architecture)</li>
-        <li><strong style="color: var(--c-on-dark);">Queue</strong> — <code>bd create</code> 10 issue, dependency graph</li>
-        <li><strong style="color: var(--c-on-dark);">Dispatch</strong> — main agent <code>bd ready</code> → spawn 3 sub-agent song song (worktree isolated)</li>
-        <li><strong style="color: var(--c-on-dark);">Verify</strong> — mỗi sub-agent chạy <code>/simplify</code> + e2e test trước khi close</li>
-        <li><strong style="color: var(--c-on-dark);">Loop</strong> — <code>/loop</code> poll queue đến khi empty</li>
-        <li><strong style="color: var(--c-on-dark);">Compress</strong> — <code>/caveman</code> mọi message intermediate</li>
-        <li><strong style="color: var(--c-on-dark);">Review</strong> — human review PR cuối, không từng commit</li>
-      </ol>
-    </div>
-    <div>
-      <div style="background: var(--c-surface-dark-elevated); padding: 14px 16px; border-radius: 12px; font-family: var(--font-mono); font-size: 11px; line-height: 1.55; color: var(--c-on-dark);">
-        <div style="color: #cc785c;">// main agent loop</div>
-        <div>while bd ready --json | jq '.[]'; do</div>
-        <div style="padding-left: 12px;">id = $(bd ready --json | head 1)</div>
-        <div style="padding-left: 12px;">Agent({</div>
-        <div style="padding-left: 24px;">subagent: "feature-dev",</div>
-        <div style="padding-left: 24px;">isolation: "worktree",</div>
-        <div style="padding-left: 24px;">prompt: $(bd show $id)</div>
-        <div style="padding-left: 12px;">})</div>
-        <div style="padding-left: 12px;">bd close $id "PR #..."</div>
-        <div>done</div>
-      </div>
-      <div style="margin-top: 12px; background: var(--c-primary); color: var(--c-on-primary); padding: 10px 12px; border-radius: var(--r-sm); font-size: 12px;">
-        <strong>Caveat:</strong> chỉ chạy với spec rõ + verification loop chắc + worktree isolation. Skip 1 cái = horror story.
-      </div>
-    </div>
-  </div>
-</div>
-
----
-
-<!-- SLIDE 26 — DEMO 2 -->
+<!-- SLIDE 26 — DEMO 3 -->
 
 <div class="slidev-layout coral" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
   <span class="badge-coral" style="background: var(--c-on-primary); color: var(--c-primary);">Live Demo</span>
-  <h1 style="margin-top: 24px; color: var(--c-on-primary);">Demo 2</h1>
+  <h1 style="margin-top: 24px; color: var(--c-on-primary);">Demo 3</h1>
   <h3 style="color: var(--c-on-primary); font-size: 28px; margin-top: 16px;">Debug + E2E Test</h3>
   <p style="margin-top: 32px; color: var(--c-on-primary); font-size: 18px;">~10 phút</p>
 </div>
@@ -987,13 +949,7 @@ mdc: true
       </ul>
     </div>
     <div>
-      <h4 style="margin: 0; font-size: 13px; color: var(--c-primary);">Cost + Model</h4>
-      <ul style="margin-top: 4px; font-size: 12px; line-height: 1.45;">
-        <li><strong>Opus mọi task</strong> — boilerplate rename = Haiku đủ. 1.67x→10x token.</li>
-        <li><strong>Bỏ prompt cache</strong> — không stable prefix, hit rate &lt; 30%.</li>
-        <li><strong>Sleep 300s</strong> trong loop — đúng TTL cache miss. Dùng &lt; 270s hoặc &gt; 1200s.</li>
-      </ul>
-      <h4 style="margin: 10px 0 0; font-size: 13px; color: var(--c-primary);">Hook + Permission</h4>
+      <h4 style="margin: 0; font-size: 13px; color: var(--c-primary);">Hook + Permission</h4>
       <ul style="margin-top: 4px; font-size: 12px; line-height: 1.45;">
         <li><strong>Hook block hợp pháp</strong> — pre-commit reject mọi commit có TODO.</li>
         <li><strong>Auto-accept worktree</strong> — assume safe, agent <code>rm -rf</code> ngoài worktree.</li>
@@ -1044,54 +1000,30 @@ mdc: true
 
 ---
 
-<!-- SLIDE 29 — MODEL + COST STRATEGY -->
+<!-- SLIDE 29 — PICK A MODEL -->
 
 <div class="slidev-layout">
-  <h2>Model + Cost Strategy</h2>
-  <p style="margin-top: 2px; color: var(--c-muted); font-size: 11px;">Tier-up khi thinking · tier-down khi grind · cache là tiền.</p>
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 8px;">
-    <div style="padding: 8px 10px; background: var(--c-canvas-soft); border-radius: 6px;">
-      <strong style="font-size: 12px;">Haiku 4.5</strong> <span style="font-size: 10px; color: var(--c-muted);">~1/10 cost Opus</span>
-      <ul style="margin: 4px 0 0; font-size: 10px; padding-left: 14px; line-height: 1.4;">
-        <li>Rename, format, codemod</li>
-        <li>File search, grep wrapper</li>
-        <li>Hook script, statusline</li>
-      </ul>
+  <h2>Pick a Model — 3 dòng nhớ</h2>
+  <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">Default Sonnet. Tier-up khi cần nghĩ kỹ. Tier-down khi grind.</p>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px;">
+    <div class="feature-card" style="padding: 16px;">
+      <h4 style="margin: 0; font-size: 16px;">Haiku</h4>
+      <p style="margin: 4px 0 0; font-size: 11px; color: var(--c-muted);">Việc cơ học</p>
+      <p style="margin-top: 10px; font-size: 13px; line-height: 1.5;">Rename · format · grep · file lookup.</p>
     </div>
-    <div style="padding: 8px 10px; background: var(--c-canvas-soft); border-radius: 6px;">
-      <strong style="font-size: 12px;">Sonnet 4.6</strong> <span style="font-size: 10px; color: var(--c-muted);">Workhorse</span>
-      <ul style="margin: 4px 0 0; font-size: 10px; padding-left: 14px; line-height: 1.4;">
-        <li>Execute step trong plan</li>
-        <li>Test, debug đơn giản</li>
-        <li>Most sub-agent</li>
-      </ul>
+    <div class="feature-card" style="padding: 16px;">
+      <h4 style="margin: 0; font-size: 16px;">Sonnet <span style="font-size: 10px; color: var(--c-muted); font-weight: 400;">default</span></h4>
+      <p style="margin: 4px 0 0; font-size: 11px; color: var(--c-muted);">90% task</p>
+      <p style="margin-top: 10px; font-size: 13px; line-height: 1.5;">Execute plan · test · debug · sub-agent.</p>
     </div>
-    <div style="padding: 8px 10px; background: var(--c-primary); color: var(--c-on-primary); border-radius: 6px;">
-      <strong style="font-size: 12px;">Opus 4.7</strong> <span style="font-size: 10px; opacity: 0.85;">Thinking heavy</span>
-      <ul style="margin: 4px 0 0; font-size: 10px; padding-left: 14px; line-height: 1.4;">
-        <li>Plan Mode task lớn</li>
-        <li>Root-cause bug đa file</li>
-        <li>Orchestrator</li>
-      </ul>
+    <div class="feature-card" style="padding: 16px; background: var(--c-primary); color: var(--c-on-primary);">
+      <h4 style="margin: 0; font-size: 16px; color: var(--c-on-primary);">Opus</h4>
+      <p style="margin: 4px 0 0; font-size: 11px; opacity: 0.85;">Khi cần nghĩ</p>
+      <p style="margin-top: 10px; font-size: 13px; line-height: 1.5;">Plan task lớn · root-cause đa file · orchestrator.</p>
     </div>
   </div>
-  <div style="margin-top: 10px; display: grid; grid-template-columns: 3fr 2fr; gap: 10px;">
-    <ul style="margin: 0; font-size: 11px; line-height: 1.45; padding-left: 16px;">
-      <li><strong>Effort slider</strong> (UI / <code>/thinking</code>) — Low · Medium · High · Extra High · Max. Cao = nghĩ kỹ hơn, tốn token hơn. High đủ cho 90% task; Max cho debug đa file / architecture.</li>
-      <li><strong>Compact ở 40-50%</strong> context, không đợi 95% — agent đỡ "ngu" giữa session.</li>
-      <li><strong>Headless</strong> <code>claude -p "..."</code> cho CI / cron / git hook.</li>
-      <li><strong>Sub-agent isolation</strong> = context riêng → main session không phình.</li>
-    </ul>
-    <div style="background: #181715; color: #f0eee6; border-radius: 6px; padding: 8px 10px; font-family: var(--font-mono); font-size: 10px; line-height: 1.45;">
-      <div style="color: #cc785c;"># switch model</div>
-      <div>/model haiku|sonnet|opus</div>
-      <div style="margin-top: 4px; color: #cc785c;"># effort (UI slider)</div>
-      <div>Low → Max</div>
-      <div style="margin-top: 4px; color: #cc785c;"># cost</div>
-      <div>/cost <span style="color: #b8b3a0;">→ $2.14</span></div>
-      <div style="margin-top: 4px; color: #cc785c;"># headless</div>
-      <div>claude -p "fix lint"</div>
-    </div>
+  <div style="margin-top: 18px; padding: 12px 16px; background: var(--c-canvas-soft); border-radius: var(--r-lg); font-size: 12px;">
+    <strong>Switch:</strong> <code>/model haiku|sonnet|opus</code> · <strong>Check chi phí:</strong> <code>/cost</code> · <strong>Quy tắc:</strong> không biết chọn → Sonnet.
   </div>
 </div>
 
