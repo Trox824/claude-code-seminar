@@ -51,7 +51,21 @@ mdc: true
       <li>Lặp lại cùng prompt cho mỗi task tương tự</li>
       <li>Copy code vào IDE, copy lỗi quay lại chat</li>
     </ul>
-    <img src="/img/claude-code-slack.webp" alt="Claude Code multi-surface" style="width: 100%; border-radius: 12px;" />
+    <div style="display: flex; flex-direction: column; gap: 14px; align-self: center;">
+      <div style="background: #fff; border: 1px solid var(--c-border); border-radius: 12px; padding: 14px 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+        <div style="font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--c-muted);">ChatGPT / Claude.ai</div>
+        <div style="margin-top: 6px; font-family: var(--font-mono); font-size: 12px; color: var(--c-body);">"Đây là code của tôi…" 📋</div>
+      </div>
+      <div style="text-align: center; font-size: 22px; color: var(--c-primary);">↓ paste</div>
+      <div style="background: #181715; color: #f0eee6; border-radius: 12px; padding: 14px 16px;">
+        <div style="font-size: 11px; letter-spacing: 1px; text-transform: uppercase; opacity: 0.6;">VS Code / Terminal</div>
+        <div style="margin-top: 6px; font-family: var(--font-mono); font-size: 12px;">$ npm test → <span style="color: #ef6e51;">FAIL</span></div>
+      </div>
+      <div style="text-align: center; font-size: 22px; color: var(--c-primary);">↑ copy lỗi</div>
+      <div style="background: var(--c-primary); color: var(--c-on-primary); border-radius: 12px; padding: 12px 16px; text-align: center; font-weight: 600; font-size: 13px;">
+        Vòng lặp thủ công · 6 lần copy/paste mỗi bug
+      </div>
+    </div>
   </div>
 </div>
 
@@ -169,7 +183,26 @@ mdc: true
         "Context là tài nguyên quan trọng nhất cần quản lý." — Anthropic docs
       </p>
     </div>
-    <img src="/img/claude-code-web.webp" alt="Claude Code web surface" style="width: 100%; border-radius: 12px;" />
+    <div style="background: #181715; color: #f0eee6; border-radius: 12px; padding: 18px 20px; font-family: var(--font-mono); font-size: 12px; line-height: 1.6; align-self: center;">
+      <div style="color: #cc785c;">$ /context</div>
+      <div style="margin-top: 8px; opacity: 0.85;">Context window: <strong style="color: #fff;">200K</strong></div>
+      <div style="margin-top: 12px; display: grid; grid-template-columns: 1fr auto; gap: 4px 12px;">
+        <span>System prompt</span><span style="color: #b8b3a0;">2.6K · 1.3%</span>
+        <span>System tools</span><span style="color: #b8b3a0;">17.6K · 8.8%</span>
+        <span>MCP tools</span><span style="color: #b8b3a0;">0.9K · 0.5%</span>
+        <span>Memory (CLAUDE.md)</span><span style="color: #b8b3a0;">0.3K · 0.2%</span>
+        <span>Skills</span><span style="color: #b8b3a0;">0.1K · 0.0%</span>
+        <span>Messages</span><span style="color: #b8b3a0;">30.5K · 15.3%</span>
+        <span style="color: #cc785c;">Free space</span><span style="color: #cc785c;">114K · 57.0%</span>
+        <span style="opacity: 0.6;">Autocompact buffer</span><span style="opacity: 0.6;">33K · 16.5%</span>
+      </div>
+      <div style="margin-top: 12px; height: 8px; border-radius: 4px; overflow: hidden; display: flex;">
+        <div style="width: 8.8%; background: #6c7a89;"></div>
+        <div style="width: 15.3%; background: #b8b3a0;"></div>
+        <div style="width: 57%; background: #cc785c;"></div>
+        <div style="width: 16.5%; background: #3a3833;"></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -249,7 +282,22 @@ mdc: true
       <li>Sai plan = rewrite, không patch</li>
       <li>Plan > 10 phút = quay về Bước 1</li>
     </ul>
-    <img src="/img/claude-code-terminal.webp" alt="Claude Code Plan Mode terminal" style="width: 100%; border-radius: 12px;" />
+    <div style="background: #181715; color: #f0eee6; border-radius: 12px; padding: 18px 20px; font-family: var(--font-mono); font-size: 12px; line-height: 1.55; align-self: center;">
+      <div style="display: flex; gap: 6px; margin-bottom: 10px;">
+        <span style="background: #cc785c; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;">⏸ PLAN MODE</span>
+        <span style="opacity: 0.5; font-size: 10px;">Shift+Tab to toggle</span>
+      </div>
+      <div style="color: #cc785c;">&gt; Refactor auth middleware to support OAuth</div>
+      <div style="margin-top: 10px; opacity: 0.85;">I'll proceed in 5 atomic steps:</div>
+      <div style="margin-top: 8px;">
+        <div>☐ 1. Extract <span style="color: #f0c674;">verifyToken()</span> into separate module</div>
+        <div>☐ 2. Add <span style="color: #f0c674;">OAuthStrategy</span> interface</div>
+        <div>☐ 3. Implement Google + GitHub providers</div>
+        <div>☐ 4. Wire into existing <span style="color: #f0c674;">/login</span> route</div>
+        <div>☐ 5. Add integration tests</div>
+      </div>
+      <div style="margin-top: 14px; opacity: 0.7; font-size: 11px;">Press <span style="background: #3a3833; padding: 1px 5px; border-radius: 3px;">Enter</span> approve · <span style="background: #3a3833; padding: 1px 5px; border-radius: 3px;">Esc</span> rewind</div>
+    </div>
   </div>
   <p style="margin-top: 24px; color: var(--c-muted); font-size: 14px;">
     Superpowers: <code>using-plan-mode</code>, <code>subagent-driven-development</code> cho task lớn.
