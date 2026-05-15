@@ -38,34 +38,37 @@ mdc: true
 
 ---
 
-<!-- SLIDE 2 — PAIN POINTS -->
+<!-- SLIDE 2 — PAIN POINTS (advanced) -->
 
 <div class="slidev-layout">
-    <h2>Bạn đang gặp pain point nào?</h2>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 32px;">
-    <ul>
-      <li>Copy đi copy lại context giữa nhiều file</li>
-      <li>Code AI sinh ra không chạy được trong môi trường thật</li>
-      <li>Mất context khi làm việc nhiều file cùng lúc</li>
-      <li>Không biết verify output của AI có đúng không</li>
-      <li>Lặp lại cùng prompt cho mỗi task tương tự</li>
-      <li>Copy code vào IDE, copy lỗi quay lại chat</li>
-    </ul>
-    <div style="display: flex; flex-direction: column; gap: 14px; align-self: center;">
-      <div style="background: #fff; border: 1px solid var(--c-border); border-radius: 12px; padding: 14px 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
-        <div style="font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--c-muted);">ChatGPT / Claude.ai</div>
-        <div style="margin-top: 6px; font-family: var(--font-mono); font-size: 12px; color: var(--c-body);">"Đây là code của tôi…" 📋</div>
-      </div>
-      <div style="text-align: center; font-size: 22px; color: var(--c-primary);">↓ paste</div>
-      <div style="background: #181715; color: #f0eee6; border-radius: 12px; padding: 14px 16px;">
-        <div style="font-size: 11px; letter-spacing: 1px; text-transform: uppercase; opacity: 0.6;">VS Code / Terminal</div>
-        <div style="margin-top: 6px; font-family: var(--font-mono); font-size: 12px;">$ npm test → <span style="color: #ef6e51;">FAIL</span></div>
-      </div>
-      <div style="text-align: center; font-size: 22px; color: var(--c-primary);">↑ copy lỗi</div>
-      <div style="background: var(--c-primary); color: var(--c-on-primary); border-radius: 12px; padding: 12px 16px; text-align: center; font-weight: 600; font-size: 13px;">
-        Vòng lặp thủ công · 6 lần copy/paste mỗi bug
-      </div>
+  <h2>Bạn đang gặp pain point nào?</h2>
+  <p style="margin-top: 4px; color: var(--c-muted); font-size: 13px;">Team đã dùng Claude Code — pain ở level tiếp theo.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 20px;">
+    <div>
+      <h4 style="margin: 0; font-size: 14px; color: var(--c-primary);">Workflow + Context</h4>
+      <ul style="margin-top: 6px; font-size: 14px;">
+        <li>Code AI sinh ra không chạy được trong môi trường thật</li>
+        <li>Không biết verify output của AI có đúng không</li>
+        <li>Mất context khi làm việc nhiều file cùng lúc</li>
+        <li>Lặp lại cùng prompt cho mỗi task tương tự</li>
+        <li>Agent báo "done" — thực chất chưa done</li>
+        <li>Context đầy rác giữa session — quên rule, sai file</li>
+      </ul>
     </div>
+    <div>
+      <h4 style="margin: 0; font-size: 14px; color: var(--c-primary);">Tooling + Scale</h4>
+      <ul style="margin-top: 6px; font-size: 14px;">
+        <li>CLAUDE.md 500+ dòng nhưng agent vẫn quên rule</li>
+        <li>Không biết khi nào fan-out sub-agent</li>
+        <li>Task dài 3+ ngày — agent mất state, lặp công việc</li>
+        <li>Token cost tăng, quality giảm với Opus everywhere</li>
+        <li>Skill chồng chéo, không rõ <em>khi nào</em> dùng cái nào</li>
+        <li>Skip Plan Mode → undo hàng loạt commit</li>
+      </ul>
+    </div>
+  </div>
+  <div style="margin-top: 20px; background: var(--c-primary); color: var(--c-on-primary); border-radius: var(--r-sm); padding: 12px 16px; text-align: center; font-weight: 600; font-size: 14px;">
+    Hôm nay: workflow nâng cao · multi-subagent · beads · /loop · design.md · /caveman · cross-agent skill
   </div>
 </div>
 
@@ -352,6 +355,77 @@ mdc: true
           <li>Commit vào git</li>
         </ul>
       </div>
+    </div>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE 16b — CLAUDE.md ANTI-PATTERNS -->
+
+<div class="slidev-layout">
+  <h2>CLAUDE.md Anti-Patterns</h2>
+  <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">~150-200 instruction budget. Mỗi rule thừa = dilute rule quan trọng. Past line 150 mất adherence, line 250 skip cả section.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px;">
+    <div class="feature-card" style="padding: 12px; border-left: 4px solid var(--c-error);">
+      <h4 style="margin: 0; color: var(--c-error); font-size: 13px;">❌ Bloat / Vague</h4>
+      <div style="margin-top: 6px; background: #fdf3ee; padding: 8px 10px; border-radius: 6px; font-family: var(--font-mono); font-size: 10px; line-height: 1.5; color: var(--c-body);">
+        # Coding Standards (340 dòng)<br/>
+        ## Tone<br/>
+        - Be a senior engineer<br/>
+        - Think step by step<br/>
+        - Approach as expert<br/>
+        ## Persona<br/>
+        - You are pragmatic<br/>
+        ## Principles<br/>
+        - Write clean code<br/>
+        - Follow SOLID<br/>
+        - DRY<br/>
+        ## Never<br/>
+        - Be sloppy<br/>
+        - Skip tests<br/>
+        ...
+      </div>
+      <p style="margin-top: 6px; font-size: 11px; color: var(--c-muted);">→ Personality fluff. Claude đã tự cố làm tốt. Compete budget với rule technical thực sự cần.</p>
+    </div>
+    <div class="feature-card" style="padding: 12px; border-left: 4px solid var(--c-success);">
+      <h4 style="margin: 0; color: var(--c-success); font-size: 13px;">✅ Specific / Constraint</h4>
+      <div style="margin-top: 6px; background: #181715; color: #f0eee6; padding: 8px 10px; border-radius: 6px; font-family: var(--font-mono); font-size: 10px; line-height: 1.5;">
+        # Project: payment-api (80 dòng)<br/>
+        ## Commands<br/>
+        - pnpm test (runs vitest)<br/>
+        - pnpm db:migrate (drizzle)<br/>
+        ## Gotchas<br/>
+        - Stripe webhook chữ ký verify ở<br/>
+        &nbsp;&nbsp;routes/webhooks/stripe.ts:42<br/>
+        - Migration thứ tự matters<br/>
+        - Date luôn UTC trong DB<br/>
+        ## Don't<br/>
+        - Modify tests trừ khi user ask<br/>
+        - Touch migrations/* không hỏi
+      </div>
+      <p style="margin-top: 6px; font-size: 11px; color: var(--c-muted);">→ Mỗi line trả lời "Claude sẽ sai gì nếu thiếu line này?". Có thì giữ, không thì xóa.</p>
+    </div>
+  </div>
+  <div style="margin-top: 10px; display: grid; grid-template-columns: 2fr 3fr; gap: 12px;">
+    <table style="font-size: 11px;">
+      <thead><tr><th>Line count</th><th>Behavior</th></tr></thead>
+      <tbody>
+        <tr><td>&lt; 120</td><td>High-signal sweet spot</td></tr>
+        <tr><td>120-200</td><td>Budget ceiling</td></tr>
+        <tr><td>200-300</td><td>Adherence drop</td></tr>
+        <tr><td>&gt; 300</td><td>Skip whole sections</td></tr>
+      </tbody>
+    </table>
+    <div style="background: var(--c-primary); color: var(--c-on-primary); padding: 10px 12px; border-radius: var(--r-sm); font-size: 11px;">
+      <strong>Fix recipe:</strong>
+      <ul style="margin: 4px 0 0; padding-left: 14px; line-height: 1.45;">
+        <li>Xóa: tone/persona/aspiration ("be senior", "think step by step")</li>
+        <li>Procedure-specific → push sang <code>Skill</code></li>
+        <li>Architecture overview → giữ ngắn, link doc</li>
+        <li>Sai 2 lần → bảo Claude tự update CLAUDE.md để khỏi lặp</li>
+        <li>Audit định kỳ: line nào xóa cũng OK → xóa</li>
+      </ul>
     </div>
   </div>
 </div>
