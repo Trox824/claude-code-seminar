@@ -344,14 +344,6 @@ mdc: true
       </table>
     </div>
   </div>
-  <div style="margin-top: 8px; display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
-    <div style="background: var(--c-primary); color: var(--c-on-primary); padding: 8px 12px; border-radius: var(--r-sm); font-size: 11px;">
-      <strong>Workflow:</strong> <code>/init</code> generate first draft → refine 10 section → giữ &lt; 200 dòng → audit khi sai lặp.
-    </div>
-    <div style="background: var(--c-canvas-soft); padding: 8px 12px; border-radius: var(--r-sm); font-size: 11px;">
-      <strong>Auto memory</strong> riêng: Claude tự viết learning per repo, load 200 dòng đầu.
-    </div>
-  </div>
 </div>
 
 ---
@@ -362,26 +354,26 @@ mdc: true
   <h2>CLAUDE.md Anti-Patterns</h2>
   <p style="margin-top: 2px; color: var(--c-muted); font-size: 11px;">~150-200 instruction budget. Past line 150 mất adherence · line 250 skip cả section.</p>
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px;">
-    <div style="padding: 8px 10px; border-left: 3px solid var(--c-error); background: #fdf3ee; border-radius: 6px;">
-      <div style="color: var(--c-error); font-size: 12px; font-weight: 600;">❌ Bloat / Vague (340 dòng)</div>
-      <div style="margin-top: 4px; font-family: var(--font-mono); font-size: 10px; line-height: 1.4; color: var(--c-body);">
+    <div style="padding: 14px 16px; background: var(--c-surface-card); border: 1px solid var(--c-hairline); border-radius: var(--r-lg);">
+      <div style="display: inline-block; background: var(--c-primary); color: var(--c-on-primary); font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: var(--r-pill); letter-spacing: 0.5px;">BLOAT · 340 DÒNG</div>
+      <div style="margin-top: 8px; font-family: var(--font-mono); font-size: 10px; line-height: 1.5; color: var(--c-ink);">
         ## Tone — "be senior engineer"<br/>
         ## Persona — "you are pragmatic"<br/>
         ## Principles — clean code, SOLID, DRY<br/>
         ## Never — be sloppy, skip tests<br/>
         ...
       </div>
-      <p style="margin: 4px 0 0; font-size: 10px; color: var(--c-muted);">→ Personality fluff. Claude tự cố làm tốt. Dilute rule technical thực sự.</p>
+      <p style="margin: 8px 0 0; font-size: 10px; color: var(--c-muted);">→ Personality fluff. Claude tự cố làm tốt. Dilute rule technical thực sự.</p>
     </div>
-    <div style="padding: 8px 10px; border-left: 3px solid var(--c-success); background: #181715; border-radius: 6px;">
-      <div style="color: var(--c-success); font-size: 12px; font-weight: 600;">✅ Specific (80 dòng)</div>
-      <div style="margin-top: 4px; font-family: var(--font-mono); font-size: 10px; line-height: 1.4; color: #f0eee6;">
+    <div style="padding: 14px 16px; background: var(--c-surface-dark); border-radius: var(--r-lg);">
+      <div style="display: inline-block; background: var(--c-accent-teal); color: var(--c-surface-dark); font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: var(--r-pill); letter-spacing: 0.5px;">SPECIFIC · 80 DÒNG</div>
+      <div style="margin-top: 8px; font-family: var(--font-mono); font-size: 10px; line-height: 1.5; color: var(--c-on-dark);">
         ## Commands — pnpm test · db:migrate<br/>
         ## Gotchas — Stripe webhook verify ở<br/>
         &nbsp;&nbsp;routes/webhooks/stripe.ts:42<br/>
         ## Don't — touch migrations/* không hỏi
       </div>
-      <p style="margin: 4px 0 0; font-size: 10px; color: #b8b3a0;">→ "Claude sẽ sai gì nếu thiếu line này?" Có → giữ. Không → xóa.</p>
+      <p style="margin: 8px 0 0; font-size: 10px; color: var(--c-on-dark-soft);">→ "Claude sẽ sai gì nếu thiếu line này?" Có → giữ. Không → xóa.</p>
     </div>
   </div>
   <div style="margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
@@ -404,45 +396,42 @@ mdc: true
 <!-- SLIDE 17 — PILLAR 2: PLAN MODE -->
 
 <div class="slidev-layout">
-    <h2>Plan Mode — Spec → Plan → Execute</h2>
-    <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">Superpowers flow: brainstorm spec → plan task-by-task → subagent execute.</p>
-  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 14px;">
-    <div class="feature-card" style="padding: 12px;">
-      <div style="font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--c-primary);">Stage 1 · Spec</div>
-      <h4 style="margin: 4px 0 0; font-size: 14px;">brainstorming</h4>
-      <ul style="margin-top: 6px; font-size: 11px;">
-        <li>Ask 1 question / message — purpose · constraint · success</li>
-        <li>Propose 2-3 approaches + trade-off</li>
-        <li>Present design sections → user approve</li>
-        <li>Save <code>docs/superpowers/specs/YYYY-MM-DD-&lt;topic&gt;-design.md</code></li>
-        <li><strong>HARD-GATE:</strong> no code trước khi spec approved</li>
+  <h2>Plan Mode — Spec → Plan → Execute</h2>
+  <p style="margin-top: 2px; color: var(--c-muted); font-size: 11px;">Superpowers flow: brainstorm spec → plan task-by-task → subagent execute.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 8px;">
+    <div class="feature-card" style="padding: 10px;">
+      <div style="font-size: 9px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--c-primary);">Stage 1 · Spec</div>
+      <h4 style="margin: 2px 0 0; font-size: 13px;">brainstorming</h4>
+      <ul style="margin: 4px 0 0; padding-left: 14px; font-size: 10.5px; line-height: 1.4;">
+        <li>1 câu hỏi/lượt — purpose · constraint · success</li>
+        <li>Đề xuất 2-3 approach + trade-off</li>
+        <li>Save <code>specs/YYYY-MM-DD-&lt;topic&gt;.md</code></li>
+        <li><strong>HARD-GATE:</strong> chưa approve = chưa code</li>
       </ul>
     </div>
-    <div class="feature-card" style="padding: 12px;">
-      <div style="font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--c-primary);">Stage 2 · Plan</div>
-      <h4 style="margin: 4px 0 0; font-size: 14px;">writing-plans</h4>
-      <ul style="margin-top: 6px; font-size: 11px;">
-        <li>Map file structure trước task</li>
-        <li>Bite-sized step 2-5 phút: test → fail → impl → pass → commit</li>
-        <li>Exact path · full code block · expected output</li>
-        <li>No placeholder ("TBD", "handle edge cases")</li>
-        <li>Save <code>docs/superpowers/plans/YYYY-MM-DD-&lt;feature&gt;.md</code></li>
+    <div class="feature-card" style="padding: 10px;">
+      <div style="font-size: 9px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--c-primary);">Stage 2 · Plan</div>
+      <h4 style="margin: 2px 0 0; font-size: 13px;">writing-plans</h4>
+      <ul style="margin: 4px 0 0; padding-left: 14px; font-size: 10.5px; line-height: 1.4;">
+        <li>Map file structure trước</li>
+        <li>Step 2-5 phút: test → fail → impl → pass → commit</li>
+        <li>Exact path · full code · expected output</li>
+        <li>No "TBD" / "handle edge cases"</li>
       </ul>
     </div>
-    <div class="feature-card" style="padding: 12px;">
-      <div style="font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--c-primary);">Stage 3 · Execute</div>
-      <h4 style="margin: 4px 0 0; font-size: 14px;">subagent-driven-development</h4>
-      <ul style="margin-top: 6px; font-size: 11px;">
-        <li>Fresh subagent per task — context isolation</li>
+    <div class="feature-card" style="padding: 10px;">
+      <div style="font-size: 9px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--c-primary);">Stage 3 · Execute</div>
+      <h4 style="margin: 2px 0 0; font-size: 13px;">subagent-driven-dev</h4>
+      <ul style="margin: 4px 0 0; padding-left: 14px; font-size: 10.5px; line-height: 1.4;">
+        <li>Fresh subagent / task — context isolation</li>
         <li>Two-stage review giữa task</li>
-        <li>Alt: <code>executing-plans</code> inline + checkpoint</li>
-        <li><kbd>Shift</kbd>+<kbd>Tab</kbd> activate Plan Mode UI</li>
+        <li><kbd>Shift</kbd>+<kbd>Tab</kbd> bật Plan Mode UI</li>
         <li>Sai 2 lần → <code>/rewind</code> về plan</li>
       </ul>
     </div>
   </div>
-  <div style="margin-top: 10px; background: var(--c-canvas-soft); padding: 8px 12px; border-radius: var(--r-sm); font-size: 11px;">
-    <strong>Khi nào dùng:</strong> multi-file · kiến trúc · bug &gt;1 giả thuyết. <strong>Khi skip:</strong> 1-line fix · typo · doc rename.
+  <div style="margin-top: 8px; background: var(--c-canvas-soft); padding: 6px 10px; border-radius: var(--r-sm); font-size: 11px;">
+    <strong>Dùng:</strong> multi-file · kiến trúc · bug &gt;1 giả thuyết. <strong>Skip:</strong> 1-line fix · typo · rename.
   </div>
 </div>
 
@@ -451,18 +440,18 @@ mdc: true
 <!-- SLIDE 18 — REWIND > CORRECT -->
 
 <div class="slidev-layout dark">
-    <h2 style="color: var(--c-on-dark);">Rewind &gt; Correct</h2>
-  <div class="callout-coral" style="margin-top: 32px;">
+  <h2 style="color: var(--c-on-dark);">Rewind &gt; Correct</h2>
+  <div class="callout-coral" style="margin-top: 14px;">
     "Khi agent đi sai hướng, đừng correct — hãy <strong>rewind</strong>."<br/>
-    <span style="font-size: 14px;">— Boris Cherny, creator Claude Code</span>
+    <span style="font-size: 13px;">— Boris Cherny, creator Claude Code</span>
   </div>
-  <ul style="margin-top: 32px; color: var(--c-on-dark-soft);">
-    <li><kbd style="background: var(--c-surface-dark-elevated); padding: 4px 10px; border-radius: var(--r-sm); color: var(--c-on-dark);">Esc Esc</kbd> hoặc <code>/rewind</code> → quay về state cũ</li>
+  <ul style="margin-top: 14px; color: var(--c-on-dark-soft); font-size: 14px; line-height: 1.5;">
+    <li><kbd style="background: var(--c-surface-dark-elevated); padding: 3px 8px; border-radius: var(--r-sm); color: var(--c-on-dark);">Esc Esc</kbd> hoặc <code>/rewind</code> → quay về state cũ</li>
     <li>Correct giữ failed attempt → pollute mọi turn sau</li>
     <li>Sau rewind: rephrase với info vừa học</li>
     <li><strong style="color: var(--c-on-dark);">2 lần correct fail → <code>/clear</code> + prompt mới</strong></li>
   </ul>
-  <p style="margin-top: 32px; color: var(--c-on-dark-soft); font-style: italic;">
+  <p style="margin-top: 14px; color: var(--c-on-dark-soft); font-style: italic; font-size: 13px;">
     <code>/clear</code> là bạn. Không có giải thưởng cho session dài nhất.
   </p>
 </div>
@@ -1018,33 +1007,33 @@ mdc: true
 
 <div class="slidev-layout dark">
   <h2 style="color: var(--c-on-dark);">Security · Defense-in-Depth</h2>
-  <p style="margin-top: 4px; color: var(--c-muted-soft); font-size: 12px;">Layer nhiều lớp — không tin agent + không tin user + không tin tool.</p>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px;">
+  <p style="margin-top: 2px; color: var(--c-muted-soft); font-size: 11px;">Layer nhiều lớp — không tin agent + không tin user + không tin tool.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 6px;">
     <div>
-      <h4 style="color: var(--c-error); margin: 0; font-size: 13px;">Risk vectors</h4>
-      <ul style="color: var(--c-on-dark-soft); font-size: 12px; margin-top: 4px; line-height: 1.45;">
+      <h4 style="color: var(--c-error); margin: 0; font-size: 12px;">Risk vectors</h4>
+      <ul style="color: var(--c-on-dark-soft); font-size: 10.5px; margin-top: 3px; padding-left: 14px; line-height: 1.35;">
         <li><code>--dangerously-skip-permissions</code> trên prod</li>
-        <li>Prompt injection qua tool result (MCP, web fetch)</li>
+        <li>Prompt injection qua tool result (MCP, web)</li>
         <li>API token overprivileged commit vào MCP config</li>
         <li>Click link trong email/PDF từ agent</li>
-        <li>Irreversible cmd không gate (<code>rm -rf</code>, DROP TABLE, force-push)</li>
+        <li>Irreversible cmd không gate (<code>rm -rf</code>, DROP, force-push)</li>
       </ul>
     </div>
     <div>
-      <h4 style="color: var(--c-warning); margin: 0; font-size: 13px;">Defense layers</h4>
-      <ul style="color: var(--c-on-dark-soft); font-size: 12px; margin-top: 4px; line-height: 1.45;">
+      <h4 style="color: var(--c-warning); margin: 0; font-size: 12px;">Defense layers</h4>
+      <ul style="color: var(--c-on-dark-soft); font-size: 10.5px; margin-top: 3px; padding-left: 14px; line-height: 1.35;">
         <li><strong>Sandbox:</strong> worktree / docker — blast radius giới hạn</li>
-        <li><strong>Permission allowlist</strong> trong <code>.claude/settings.json</code></li>
+        <li><strong>Permission allowlist</strong> <code>.claude/settings.json</code></li>
         <li><strong>PreToolUse hook:</strong> block <code>rm -rf</code>, force-push, prod DB</li>
-        <li><strong>Stop hook:</strong> chạy linter/secret scan trước khi user thấy</li>
+        <li><strong>Stop hook:</strong> linter/secret scan trước khi user thấy</li>
         <li><strong>Subagent <code>code-reviewer</code> + <code>/security-review</code></strong> trước merge</li>
-        <li>Read-only mode browser/IDE tier (computer-use tier system)</li>
+        <li>Read-only browser/IDE tier (computer-use tier)</li>
       </ul>
     </div>
   </div>
-  <div style="margin-top: 10px; display: grid; grid-template-columns: 1fr 2fr; gap: 12px; align-items: center; background: var(--c-primary); color: var(--c-on-primary); padding: 10px 14px; border-radius: var(--r-sm);">
-    <img src="/img/toms-hardware-db-wipe.jpg" alt="Tom's Hardware DB wipe" style="width: 100%; height: 70px; object-fit: cover; border-radius: 6px;" />
-    <div style="font-size: 12px;">
+  <div style="margin-top: 8px; display: grid; grid-template-columns: 1fr 2.5fr; gap: 10px; align-items: center; background: var(--c-primary); color: var(--c-on-primary); padding: 8px 12px; border-radius: var(--r-sm);">
+    <img src="/img/toms-hardware-db-wipe.jpg" alt="Tom's Hardware DB wipe" style="width: 100%; height: 50px; object-fit: cover; border-radius: 6px;" />
+    <div style="font-size: 11px; line-height: 1.35;">
       <strong>Horror 2026:</strong> Cursor-Opus xoá production DB Pocketo <strong>9 giây</strong>, backup bay theo. <em>Cause: skip-permissions + no hook + no sandbox.</em>
     </div>
   </div>
