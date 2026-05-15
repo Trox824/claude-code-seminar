@@ -368,67 +368,41 @@ mdc: true
 
 <div class="slidev-layout">
   <h2>CLAUDE.md Anti-Patterns</h2>
-  <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">~150-200 instruction budget. Mỗi rule thừa = dilute rule quan trọng. Past line 150 mất adherence, line 250 skip cả section.</p>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px;">
-    <div class="feature-card" style="padding: 12px; border-left: 4px solid var(--c-error);">
-      <h4 style="margin: 0; color: var(--c-error); font-size: 13px;">❌ Bloat / Vague</h4>
-      <div style="margin-top: 6px; background: #fdf3ee; padding: 8px 10px; border-radius: 6px; font-family: var(--font-mono); font-size: 10px; line-height: 1.5; color: var(--c-body);">
-        # Coding Standards (340 dòng)<br/>
-        ## Tone<br/>
-        - Be a senior engineer<br/>
-        - Think step by step<br/>
-        - Approach as expert<br/>
-        ## Persona<br/>
-        - You are pragmatic<br/>
-        ## Principles<br/>
-        - Write clean code<br/>
-        - Follow SOLID<br/>
-        - DRY<br/>
-        ## Never<br/>
-        - Be sloppy<br/>
-        - Skip tests<br/>
+  <p style="margin-top: 2px; color: var(--c-muted); font-size: 11px;">~150-200 instruction budget. Past line 150 mất adherence · line 250 skip cả section.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px;">
+    <div style="padding: 8px 10px; border-left: 3px solid var(--c-error); background: #fdf3ee; border-radius: 6px;">
+      <div style="color: var(--c-error); font-size: 12px; font-weight: 600;">❌ Bloat / Vague (340 dòng)</div>
+      <div style="margin-top: 4px; font-family: var(--font-mono); font-size: 10px; line-height: 1.4; color: var(--c-body);">
+        ## Tone — "be senior engineer"<br/>
+        ## Persona — "you are pragmatic"<br/>
+        ## Principles — clean code, SOLID, DRY<br/>
+        ## Never — be sloppy, skip tests<br/>
         ...
       </div>
-      <p style="margin-top: 6px; font-size: 11px; color: var(--c-muted);">→ Personality fluff. Claude đã tự cố làm tốt. Compete budget với rule technical thực sự cần.</p>
+      <p style="margin: 4px 0 0; font-size: 10px; color: var(--c-muted);">→ Personality fluff. Claude tự cố làm tốt. Dilute rule technical thực sự.</p>
     </div>
-    <div class="feature-card" style="padding: 12px; border-left: 4px solid var(--c-success);">
-      <h4 style="margin: 0; color: var(--c-success); font-size: 13px;">✅ Specific / Constraint</h4>
-      <div style="margin-top: 6px; background: #181715; color: #f0eee6; padding: 8px 10px; border-radius: 6px; font-family: var(--font-mono); font-size: 10px; line-height: 1.5;">
-        # Project: payment-api (80 dòng)<br/>
-        ## Commands<br/>
-        - pnpm test (runs vitest)<br/>
-        - pnpm db:migrate (drizzle)<br/>
-        ## Gotchas<br/>
-        - Stripe webhook chữ ký verify ở<br/>
+    <div style="padding: 8px 10px; border-left: 3px solid var(--c-success); background: #181715; border-radius: 6px;">
+      <div style="color: var(--c-success); font-size: 12px; font-weight: 600;">✅ Specific (80 dòng)</div>
+      <div style="margin-top: 4px; font-family: var(--font-mono); font-size: 10px; line-height: 1.4; color: #f0eee6;">
+        ## Commands — pnpm test · db:migrate<br/>
+        ## Gotchas — Stripe webhook verify ở<br/>
         &nbsp;&nbsp;routes/webhooks/stripe.ts:42<br/>
-        - Migration thứ tự matters<br/>
-        - Date luôn UTC trong DB<br/>
-        ## Don't<br/>
-        - Modify tests trừ khi user ask<br/>
-        - Touch migrations/* không hỏi
+        ## Don't — touch migrations/* không hỏi
       </div>
-      <p style="margin-top: 6px; font-size: 11px; color: var(--c-muted);">→ Mỗi line trả lời "Claude sẽ sai gì nếu thiếu line này?". Có thì giữ, không thì xóa.</p>
+      <p style="margin: 4px 0 0; font-size: 10px; color: #b8b3a0;">→ "Claude sẽ sai gì nếu thiếu line này?" Có → giữ. Không → xóa.</p>
     </div>
   </div>
-  <div style="margin-top: 10px; display: grid; grid-template-columns: 2fr 3fr; gap: 12px;">
+  <div style="margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
     <table style="font-size: 11px;">
-      <thead><tr><th>Line count</th><th>Behavior</th></tr></thead>
       <tbody>
-        <tr><td>&lt; 120</td><td>High-signal sweet spot</td></tr>
-        <tr><td>120-200</td><td>Budget ceiling</td></tr>
-        <tr><td>200-300</td><td>Adherence drop</td></tr>
-        <tr><td>&gt; 300</td><td>Skip whole sections</td></tr>
+        <tr><td><strong>&lt; 120</strong></td><td>Sweet spot</td></tr>
+        <tr><td><strong>120-200</strong></td><td>Budget ceiling</td></tr>
+        <tr><td><strong>200-300</strong></td><td>Adherence drop</td></tr>
+        <tr><td><strong>&gt; 300</strong></td><td>Skip section</td></tr>
       </tbody>
     </table>
-    <div style="background: var(--c-primary); color: var(--c-on-primary); padding: 10px 12px; border-radius: var(--r-sm); font-size: 11px;">
-      <strong>Fix recipe:</strong>
-      <ul style="margin: 4px 0 0; padding-left: 14px; line-height: 1.45;">
-        <li>Xóa: tone/persona/aspiration ("be senior", "think step by step")</li>
-        <li>Procedure-specific → push sang <code>Skill</code></li>
-        <li>Architecture overview → giữ ngắn, link doc</li>
-        <li>Sai 2 lần → bảo Claude tự update CLAUDE.md để khỏi lặp</li>
-        <li>Audit định kỳ: line nào xóa cũng OK → xóa</li>
-      </ul>
+    <div style="background: var(--c-primary); color: var(--c-on-primary); padding: 8px 10px; border-radius: var(--r-sm); font-size: 11px; line-height: 1.45;">
+      <strong>Fix:</strong> Xóa tone/persona · push procedure → Skill · sai 2 lần → bảo Claude tự update · audit định kỳ.
     </div>
   </div>
 </div>
@@ -681,41 +655,34 @@ mdc: true
 
 <div class="slidev-layout">
   <h2>beads — Local Kanban cho Agent</h2>
-  <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">Memory upgrade cho coding agent — graph issue tracker chạy local, git-friendly.</p>
-  <div style="display: grid; grid-template-columns: 3fr 2fr; gap: 14px; margin-top: 12px;">
+  <p style="margin-top: 2px; color: var(--c-muted); font-size: 11px;">Graph issue tracker chạy local, git-friendly · memory upgrade cho coding agent.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px;">
+    <table style="font-family: var(--font-mono); font-size: 11px;">
+      <tbody>
+        <tr><td><code>bd init</code></td><td>Tạo store + AGENTS.md</td></tr>
+        <tr><td><code>bd create "..." -p 0</code></td><td>Task priority</td></tr>
+        <tr><td><code>bd ready</code></td><td>Task không block</td></tr>
+        <tr><td><code>bd update &lt;id&gt; --claim</code></td><td>Claim atomic</td></tr>
+        <tr><td><code>bd close &lt;id&gt;</code></td><td>Hoàn thành</td></tr>
+        <tr><td><code>bd remember "..."</code></td><td>Lưu insight</td></tr>
+        <tr><td><code>--json</code></td><td>Parse cho agent</td></tr>
+      </tbody>
+    </table>
     <div>
-      <table style="font-family: var(--font-mono); font-size: 12px;">
+      <div style="padding: 8px 10px; background: var(--c-canvas-soft); border-radius: 6px; font-size: 11px;">
+        <strong>Graph deps:</strong> relates_to · duplicates · supersedes · replies_to. Hash ID <code>bd-a1b2</code> tránh merge conflict.
+      </div>
+      <table style="font-size: 11px; margin-top: 6px;">
         <tbody>
-          <tr><td><code>bd init</code></td><td>Tạo store + AGENTS.md</td></tr>
-          <tr><td><code>bd create "..." -p 0</code></td><td>Task priority 0</td></tr>
-          <tr><td><code>bd ready</code></td><td>Task không bị block</td></tr>
-          <tr><td><code>bd update &lt;id&gt; --claim</code></td><td>Agent claim atomic</td></tr>
-          <tr><td><code>bd show &lt;id&gt;</code></td><td>Detail + audit trail</td></tr>
-          <tr><td><code>bd close &lt;id&gt; "msg"</code></td><td>Hoàn thành</td></tr>
-          <tr><td><code>bd remember "..."</code></td><td>Lưu insight, bd prime inject</td></tr>
-          <tr><td><code>bd ... --json</code></td><td>Parse cho agent</td></tr>
+          <tr><td><strong>TodoWrite</strong></td><td>Session-scoped</td></tr>
+          <tr><td><strong>beads</strong></td><td>Repo-scoped, git diff</td></tr>
+          <tr><td><strong>Linear/Jira</strong></td><td>Team-scoped, cloud</td></tr>
         </tbody>
       </table>
-      <p style="margin-top: 8px; font-size: 12px;">
-        Dependency graph: <code>relates_to</code> · <code>duplicates</code> · <code>supersedes</code> · <code>replies_to</code>. Hash ID <code>bd-a1b2</code> tránh merge conflict.
-      </p>
     </div>
-    <div>
-      <div class="feature-card" style="padding: 10px 12px;">
-        <h4 style="margin: 0; font-size: 13px;">Vs TodoWrite / Linear</h4>
-        <table style="font-size: 11px; margin-top: 4px;">
-          <tbody>
-            <tr><td>TodoWrite</td><td>Session-scoped</td></tr>
-            <tr><td>beads</td><td>Repo-scoped, git diff</td></tr>
-            <tr><td>Linear/Jira</td><td>Team-scoped, cloud</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div style="margin-top: 8px; background: var(--c-primary); color: var(--c-on-primary); padding: 10px 12px; border-radius: var(--r-sm); font-size: 12px;">
-        <strong>Use case:</strong> Human file 20 issue → agent <code>bd ready</code> pick task → close khi PR merge. Long-horizon work không mất context.
-      </div>
-      <p style="margin-top: 6px; color: var(--c-muted); font-size: 11px;">Install: <code>curl -fsSL .../install.sh | bash</code> · github.com/steveyegge/beads</p>
-    </div>
+  </div>
+  <div style="margin-top: 8px; background: var(--c-primary); color: var(--c-on-primary); padding: 8px 12px; border-radius: var(--r-sm); font-size: 11px;">
+    <strong>Flow:</strong> Human file 20 issue → agent <code>bd ready</code> → claim → PR → close. Long-horizon không mất state. · <code>curl ...install.sh | bash</code> · steveyegge/beads
   </div>
 </div>
 
@@ -1037,58 +1004,46 @@ mdc: true
 
 <div class="slidev-layout">
   <h2>Model + Cost Strategy</h2>
-  <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">Tier-up khi cần thinking, tier-down khi grind. Cache là tiền.</p>
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px;">
-    <div class="feature-card" style="padding: 10px 12px;">
-      <h4 style="margin: 0; font-size: 13px;">Haiku 4.5</h4>
-      <p style="margin: 2px 0 0; font-size: 11px; color: var(--c-muted);">~1/10 cost Opus</p>
-      <ul style="margin: 6px 0 0; font-size: 11px; padding-left: 14px; line-height: 1.4;">
+  <p style="margin-top: 2px; color: var(--c-muted); font-size: 11px;">Tier-up khi thinking · tier-down khi grind · cache là tiền.</p>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 8px;">
+    <div style="padding: 8px 10px; background: var(--c-canvas-soft); border-radius: 6px;">
+      <strong style="font-size: 12px;">Haiku 4.5</strong> <span style="font-size: 10px; color: var(--c-muted);">~1/10 cost Opus</span>
+      <ul style="margin: 4px 0 0; font-size: 10px; padding-left: 14px; line-height: 1.4;">
         <li>Rename, format, codemod</li>
         <li>File search, grep wrapper</li>
-        <li>Lint fix, import sort</li>
-        <li>Statusline, hook scripts</li>
+        <li>Hook script, statusline</li>
       </ul>
     </div>
-    <div class="feature-card" style="padding: 10px 12px;">
-      <h4 style="margin: 0; font-size: 13px;">Sonnet 4.6</h4>
-      <p style="margin: 2px 0 0; font-size: 11px; color: var(--c-muted);">Workhorse · default</p>
-      <ul style="margin: 6px 0 0; font-size: 11px; padding-left: 14px; line-height: 1.4;">
+    <div style="padding: 8px 10px; background: var(--c-canvas-soft); border-radius: 6px;">
+      <strong style="font-size: 12px;">Sonnet 4.6</strong> <span style="font-size: 10px; color: var(--c-muted);">Workhorse</span>
+      <ul style="margin: 4px 0 0; font-size: 10px; padding-left: 14px; line-height: 1.4;">
         <li>Execute step trong plan</li>
-        <li>Write test, debug đơn giản</li>
-        <li>Refactor 1-3 file</li>
+        <li>Test, debug đơn giản</li>
         <li>Most sub-agent</li>
       </ul>
     </div>
-    <div class="feature-card" style="padding: 10px 12px; background: var(--c-primary); color: var(--c-on-primary);">
-      <h4 style="margin: 0; font-size: 13px; color: var(--c-on-primary);">Opus 4.7</h4>
-      <p style="margin: 2px 0 0; font-size: 11px; opacity: 0.85;">Thinking heavy</p>
-      <ul style="margin: 6px 0 0; font-size: 11px; padding-left: 14px; line-height: 1.4;">
-        <li>Plan Mode cho task lớn</li>
+    <div style="padding: 8px 10px; background: var(--c-primary); color: var(--c-on-primary); border-radius: 6px;">
+      <strong style="font-size: 12px;">Opus 4.7</strong> <span style="font-size: 10px; opacity: 0.85;">Thinking heavy</span>
+      <ul style="margin: 4px 0 0; font-size: 10px; padding-left: 14px; line-height: 1.4;">
+        <li>Plan Mode task lớn</li>
         <li>Root-cause bug đa file</li>
-        <li>Architecture decision</li>
-        <li>Multi-agent orchestrator</li>
+        <li>Orchestrator</li>
       </ul>
     </div>
   </div>
-  <div style="margin-top: 14px; display: grid; grid-template-columns: 3fr 2fr; gap: 12px;">
-    <div>
-      <h4 style="margin: 0; font-size: 13px;">Cache + thinking budget</h4>
-      <ul style="margin-top: 4px; font-size: 12px; line-height: 1.45;">
-        <li><strong>Prompt cache TTL 5 phút</strong> — stable prefix (system + CLAUDE.md + skills) hit ~90%. Skill load mid-turn = bust cache.</li>
-        <li><strong>Thinking levels:</strong> <code>think</code> &lt; <code>think hard</code> &lt; <code>think harder</code> &lt; <code>ultrathink</code>. Bậc cao chỉ khi nhánh decision phức tạp.</li>
-        <li><strong>Headless mode</strong> <code>claude -p "..."</code> cho CI, script — chỉ output cuối, no UI overhead.</li>
-        <li><strong>Sub-agent isolation</strong> = context fresh per task → cache reuse cao hơn 1 session dài.</li>
-      </ul>
-    </div>
-    <div style="background: #181715; color: #f0eee6; border-radius: 8px; padding: 10px 12px; font-family: var(--font-mono); font-size: 11px; line-height: 1.5;">
-      <div style="color: #cc785c;"># Switch giữa session</div>
-      <div>/model haiku</div>
-      <div>/model sonnet</div>
-      <div>/model opus</div>
-      <div style="margin-top: 6px; color: #cc785c;"># Cost monitor</div>
-      <div>/cost</div>
-      <div style="color: #b8b3a0; font-size: 10px;">Session $2.14 · cache 87%</div>
-      <div style="margin-top: 6px; color: #cc785c;"># Headless</div>
+  <div style="margin-top: 10px; display: grid; grid-template-columns: 3fr 2fr; gap: 10px;">
+    <ul style="margin: 0; font-size: 11px; line-height: 1.45; padding-left: 16px;">
+      <li><strong>Cache TTL 5 phút</strong> — stable prefix hit ~90%. Skill load mid-turn bust cache.</li>
+      <li><strong>Thinking:</strong> <code>think</code> &lt; <code>think hard</code> &lt; <code>ultrathink</code>. Bậc cao chỉ khi decision phức tạp.</li>
+      <li><strong>Headless</strong> <code>claude -p "..."</code> cho CI/script.</li>
+      <li><strong>Sub-agent isolation</strong> → cache reuse cao hơn session dài.</li>
+    </ul>
+    <div style="background: #181715; color: #f0eee6; border-radius: 6px; padding: 8px 10px; font-family: var(--font-mono); font-size: 10px; line-height: 1.45;">
+      <div style="color: #cc785c;"># switch model</div>
+      <div>/model haiku|sonnet|opus</div>
+      <div style="margin-top: 4px; color: #cc785c;"># cost</div>
+      <div>/cost <span style="color: #b8b3a0;">→ $2.14 · cache 87%</span></div>
+      <div style="margin-top: 4px; color: #cc785c;"># headless</div>
       <div>claude -p "fix lint"</div>
     </div>
   </div>
