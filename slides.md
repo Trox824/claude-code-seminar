@@ -32,7 +32,7 @@ mdc: true
     <strong>Tuan Hung Nguyen</strong> · 15/6/2026
   </div>
   <p style="margin-top: 96px; font-style: italic; color: var(--c-muted);">
-    "Coding không còn là điểm nghẽn nữa." — Spotify, Code w/ Claude London 2026
+    "Điểm nghẽn đã dịch từ coding sang mọi thứ xung quanh coding." — Fiona Fung, Director of Engineering, Claude Code · Code w/ Claude SF 2026
   </p>
 </div>
 
@@ -835,7 +835,7 @@ mdc: true
     Use case bạn đang nghĩ tới? Pain point nào trong daily work?
   </p>
   <p style="color: var(--c-on-primary); font-size: 16px; margin-top: 48px; font-style: italic; max-width: 800px;">
-    "Coding không còn là điểm nghẽn. Điểm nghẽn = khả năng orchestrate agent."<br/>— Spotify
+    "Điểm nghẽn đã dịch từ coding sang mọi thứ xung quanh coding."<br/>— Fiona Fung, Director of Engineering, Claude Code · Code w/ Claude SF 2026
   </p>
   <h2 style="color: var(--c-on-primary); margin-top: 64px;">Cảm ơn</h2>
 </div>
