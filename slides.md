@@ -28,9 +28,6 @@ mdc: true
   <p style="font-size: 22px; margin-top: 24px; color: var(--c-body-strong);">
     Multi-subagent · beads · /loop · design.md · cross-agent skill · cost tier
   </p>
-  <p style="font-size: 15px; margin-top: 8px; color: var(--c-muted);">
-    Cho team đã quen Claude Code — bước tiếp theo sau workflow cơ bản
-  </p>
   <div style="margin-top: 48px; color: var(--c-body-strong); font-size: 18px;">
     <strong>Tuan Hung Nguyen</strong> · 15/6/2026
   </div>
