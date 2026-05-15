@@ -1,6 +1,6 @@
 ---
 theme: default
-title: Hướng dẫn Claude Code — Từ Chat copy-paste đến Agentic Coding
+title: Claude Code Nâng Cao — Orchestration, Skill Stack & Defense
 info: |
   Seminar 90-120 phút cho engineer chuyển từ Chat sang Agent.
   Design: Anthropic Claude.com — cream canvas + coral CTA + dark navy mockups.
@@ -23,10 +23,13 @@ mdc: true
 
 <div class="slidev-layout">
   <img src="/img/anthropic-logo.svg" alt="Anthropic" style="height: 28px; margin-bottom: 12px;" />
-  <span class="eyebrow">Seminar · 90-120 phút</span>
-  <h1>Từ Chat copy-paste<br/>đến Agentic Coding</h1>
+  <span class="eyebrow">Seminar · Advanced · 90-120 phút</span>
+  <h1>Claude Code Nâng Cao<br/>Orchestration · Skill Stack · Defense</h1>
   <p style="font-size: 22px; margin-top: 24px; color: var(--c-body-strong);">
-    Hướng dẫn Claude Code cho Engineer mới bắt đầu
+    Multi-subagent · beads · /loop · design.md · cross-agent skill · cost tier
+  </p>
+  <p style="font-size: 15px; margin-top: 8px; color: var(--c-muted);">
+    Cho team đã quen Claude Code — bước tiếp theo sau workflow cơ bản
   </p>
   <div style="margin-top: 48px; color: var(--c-body-strong); font-size: 18px;">
     <strong>Tuan Hung Nguyen</strong> · 15/6/2026
