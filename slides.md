@@ -216,7 +216,6 @@ mdc: true
         <li>Atomic steps · review · approve hoặc rewind</li>
         <li>Plan &gt; 10 phút → quay lại State</li>
       </ul>
-      <p style="margin-top: 6px; color: var(--c-muted); font-size: 11px;">Skills: <code>brainstorming</code>, <code>using-plan-mode</code>, <code>writing-plans</code>.</p>
     </div>
     <div style="background: #181715; color: #f0eee6; border-radius: 12px; padding: 14px 16px; font-family: var(--font-mono); font-size: 11px; line-height: 1.5; align-self: center;">
       <div style="display: flex; gap: 6px; margin-bottom: 8px;">
@@ -280,7 +279,6 @@ mdc: true
       <p style="margin-top: 10px; color: var(--c-on-dark-soft); font-size: 12px;">
         E2E flow: server local (bg) → sub-agent điều khiển browser → click→response→DOM → PASS/FAIL + screenshot.
       </p>
-      <p style="margin-top: 6px; color: var(--c-muted-soft); font-size: 11px;">Skills: <code>test-driven-development</code> · <code>e2e-playwright-fix-loop</code> · <code>verification-before-completion</code>.</p>
     </div>
   </div>
 </div>
@@ -313,7 +311,6 @@ mdc: true
   <span class="badge-coral" style="background: var(--c-on-primary); color: var(--c-primary);">Live Demo</span>
   <h1 style="margin-top: 24px; color: var(--c-on-primary);">Demo 1</h1>
   <h3 style="color: var(--c-on-primary); font-size: 28px; margin-top: 16px;">Full cycle + Plan + Rewind</h3>
-  <p style="margin-top: 32px; color: var(--c-on-primary); font-size: 18px;">~12-15 phút</p>
 </div>
 
 ---
@@ -408,34 +405,49 @@ mdc: true
 <!-- SLIDE 17 — PILLAR 2: PLAN MODE -->
 
 <div class="slidev-layout">
-    <h2>Plan Mode (chi tiết)</h2>
-  <div style="display: grid; grid-template-columns: 2fr 3fr; gap: 32px; margin-top: 32px;">
-    <div>
-      <h4>Activate</h4>
-      <div style="margin-top: 12px; display: flex; gap: 8px;">
-        <kbd style="padding: 8px 12px; background: var(--c-canvas); border: 1px solid var(--c-hairline); border-radius: var(--r-sm); font-family: var(--font-mono);">Shift</kbd>
-        <span style="line-height: 32px;">+</span>
-        <kbd style="padding: 8px 12px; background: var(--c-canvas); border: 1px solid var(--c-hairline); border-radius: var(--r-sm); font-family: var(--font-mono);">Tab</kbd>
-      </div>
-      <h4 style="margin-top: 24px;">Khi nào dùng</h4>
-      <ul>
-        <li>Multi-file task</li>
-        <li>Quyết định kiến trúc</li>
-        <li>Bug có > 1 nguyên nhân giả định</li>
+    <h2>Plan Mode — Spec → Plan → Execute</h2>
+    <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">Superpowers flow: brainstorm spec → plan task-by-task → subagent execute.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 14px;">
+
+    <div class="feature-card" style="padding: 12px;">
+      <div style="font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--c-primary);">Stage 1 · Spec</div>
+      <h4 style="margin: 4px 0 0; font-size: 14px;">brainstorming</h4>
+      <ul style="margin-top: 6px; font-size: 11px;">
+        <li>Ask 1 question / message — purpose · constraint · success</li>
+        <li>Propose 2-3 approaches + trade-off</li>
+        <li>Present design sections → user approve</li>
+        <li>Save <code>docs/superpowers/specs/YYYY-MM-DD-&lt;topic&gt;-design.md</code></li>
+        <li><strong>HARD-GATE:</strong> no code trước khi spec approved</li>
       </ul>
     </div>
-    <div class="feature-card">
-      <div style="font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--c-primary); margin-bottom: 12px;">Plan output</div>
-      <ol style="font-family: var(--font-mono); font-size: 13px;">
-        <li>Read auth middleware config</li>
-        <li>Identify JWT verify path</li>
-        <li>Add JWT lib + types</li>
-        <li>Write test cases (10 fixtures)</li>
-        <li>Refactor middleware</li>
-        <li>Run test suite, fix failures</li>
-        <li>Update CLAUDE.md notes</li>
-      </ol>
+
+    <div class="feature-card" style="padding: 12px;">
+      <div style="font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--c-primary);">Stage 2 · Plan</div>
+      <h4 style="margin: 4px 0 0; font-size: 14px;">writing-plans</h4>
+      <ul style="margin-top: 6px; font-size: 11px;">
+        <li>Map file structure trước task</li>
+        <li>Bite-sized step 2-5 phút: test → fail → impl → pass → commit</li>
+        <li>Exact path · full code block · expected output</li>
+        <li>No placeholder ("TBD", "handle edge cases")</li>
+        <li>Save <code>docs/superpowers/plans/YYYY-MM-DD-&lt;feature&gt;.md</code></li>
+      </ul>
     </div>
+
+    <div class="feature-card" style="padding: 12px;">
+      <div style="font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--c-primary);">Stage 3 · Execute</div>
+      <h4 style="margin: 4px 0 0; font-size: 14px;">subagent-driven-development</h4>
+      <ul style="margin-top: 6px; font-size: 11px;">
+        <li>Fresh subagent per task — context isolation</li>
+        <li>Two-stage review giữa task</li>
+        <li>Alt: <code>executing-plans</code> inline + checkpoint</li>
+        <li><kbd>Shift</kbd>+<kbd>Tab</kbd> activate Plan Mode UI</li>
+        <li>Sai 2 lần → <code>/rewind</code> về plan</li>
+      </ul>
+    </div>
+
+  </div>
+  <div style="margin-top: 10px; background: var(--c-canvas-soft); padding: 8px 12px; border-radius: var(--r-sm); font-size: 11px;">
+    <strong>Khi nào dùng:</strong> multi-file · kiến trúc · bug &gt;1 giả thuyết. <strong>Khi skip:</strong> 1-line fix · typo · doc rename.
   </div>
 </div>
 
@@ -640,7 +652,56 @@ mdc: true
         <li>Chỉ return kết quả cuối — search 200 token vs grep 40K</li>
         <li>Worktree isolation cho code-writing agent</li>
       </ul>
-      <p style="margin-top: 6px; color: var(--c-muted); font-size: 11px;">Skills: <code>dispatching-parallel-agents</code> · <code>subagent-driven-development</code> · <code>multi-agent-orchestration</code>.</p>
+    </div>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE A1b — SUB-AGENT DEVELOPMENT -->
+
+<div class="slidev-layout">
+  <h2>Sub-agent Development</h2>
+  <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">Tự build sub-agent — markdown file + frontmatter, không cần code.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px;">
+    <div>
+      <h4 style="margin: 0; font-size: 14px;">Anatomy</h4>
+      <ul style="margin-top: 6px; font-size: 12px;">
+        <li><code>.claude/agents/&lt;name&gt;.md</code> — project scope</li>
+        <li><code>~/.claude/agents/</code> — user scope, share mọi repo</li>
+        <li>Frontmatter: <code>name</code> · <code>description</code> · <code>tools</code> · <code>model</code></li>
+        <li>Body = system prompt cho sub-agent</li>
+      </ul>
+      <h4 style="margin: 12px 0 0; font-size: 14px;">Design rule</h4>
+      <ul style="margin-top: 6px; font-size: 12px;">
+        <li><strong>Description</strong> rõ trigger — main agent dựa vào để chọn</li>
+        <li>Tool allowlist tối thiểu — security + tốc độ</li>
+        <li>Model nhỏ (Haiku) cho task lookup · Opus cho reasoning</li>
+        <li>Prompt body: role · constraint · output format</li>
+      </ul>
+    </div>
+    <div>
+      <div style="background: #181715; color: #f0eee6; border-radius: 12px; padding: 12px 14px; font-family: var(--font-mono); font-size: 10.5px; line-height: 1.5;">
+        <div style="color: #cc785c;"># .claude/agents/db-migration-reviewer.md</div>
+        <div style="margin-top: 4px;">---</div>
+        <div>name: db-migration-reviewer</div>
+        <div>description: Review SQL migration cho</div>
+        <div style="padding-left: 14px;">safety. Trigger khi diff chứa</div>
+        <div style="padding-left: 14px;">file <code>migrations/*.sql</code>.</div>
+        <div>tools: Read, Grep, Bash</div>
+        <div>model: sonnet</div>
+        <div>---</div>
+        <div style="margin-top: 4px;">Bạn là DBA. Check:</div>
+        <div>- NOT NULL không default → block</div>
+        <div>- Index trên cột &gt;10M row → CONCURRENTLY</div>
+        <div>- Lock escalation risk</div>
+        <div>Output: PASS/BLOCK + reason.</div>
+      </div>
+      <ul style="margin-top: 8px; font-size: 12px;">
+        <li><code>/agents</code> — UI list · edit · test sub-agent</li>
+        <li>Invoke: <code>Agent(subagent_type: "db-migration-reviewer", ...)</code></li>
+        <li>Iterate prompt như skill — eval bằng case thật</li>
+      </ul>
     </div>
   </div>
 </div>
