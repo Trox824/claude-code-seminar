@@ -217,21 +217,23 @@ mdc: true
         <li>Plan &gt; 10 phút → quay lại State</li>
       </ul>
     </div>
-    <div style="background: #181715; color: #f0eee6; border-radius: 12px; padding: 14px 16px; font-family: var(--font-mono); font-size: 11px; line-height: 1.5; align-self: center;">
-      <div style="display: flex; gap: 6px; margin-bottom: 8px;">
-        <span style="background: #cc785c; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;">⏸ PLAN MODE</span>
-        <span style="opacity: 0.5; font-size: 10px;">Shift+Tab</span>
+    <div style="background: #181715; color: #faf9f5; border-radius: 12px; padding: 24px; font-family: var(--font-mono); font-size: 11px; line-height: 1.6; align-self: center;">
+      <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 12px;">
+        <span style="background: #cc785c; color: #ffffff; padding: 4px 12px; border-radius: 9999px; font-size: 12px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;">⏸ Plan Mode</span>
+        <span style="color: #a09d96; font-size: 10px;">Shift+Tab</span>
       </div>
-      <div style="color: #cc785c;">&gt; Refactor auth → OAuth</div>
-      <div style="margin-top: 8px; opacity: 0.85;">5 atomic steps:</div>
-      <div style="margin-top: 4px;">
-        <div>☐ Extract <span style="color: #f0c674;">verifyToken()</span></div>
-        <div>☐ Add <span style="color: #f0c674;">OAuthStrategy</span></div>
-        <div>☐ Google + GitHub providers</div>
-        <div>☐ Wire <span style="color: #f0c674;">/login</span> route</div>
-        <div>☐ Integration tests</div>
+      <div style="background: #1f1e1b; border-radius: 8px; padding: 16px;">
+        <div style="color: #cc785c;">&gt; Refactor auth → OAuth</div>
+        <div style="margin-top: 10px; color: #a09d96;">5 atomic steps:</div>
+        <div style="margin-top: 6px;">
+          <div>☐ Extract <span style="color: #e8a55a;">verifyToken()</span></div>
+          <div>☐ Add <span style="color: #e8a55a;">OAuthStrategy</span></div>
+          <div>☐ Google + GitHub providers</div>
+          <div>☐ Wire <span style="color: #e8a55a;">/login</span> route</div>
+          <div>☐ Integration tests</div>
+        </div>
       </div>
-      <div style="margin-top: 10px; opacity: 0.7; font-size: 10px;"><span style="background: #3a3833; padding: 1px 5px; border-radius: 3px;">Enter</span> approve · <span style="background: #3a3833; padding: 1px 5px; border-radius: 3px;">Esc</span> rewind</div>
+      <div style="margin-top: 12px; color: #a09d96; font-size: 10px;"><span style="background: #252320; color: #faf9f5; padding: 2px 6px; border-radius: 4px;">Enter</span> approve · <span style="background: #252320; color: #faf9f5; padding: 2px 6px; border-radius: 4px;">Esc</span> rewind</div>
     </div>
   </div>
 </div>
