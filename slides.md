@@ -561,52 +561,52 @@ mdc: true
 
 <div class="slidev-layout">
   <h2>Skills · Sub-agents · Hooks</h2>
-  <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">3 cơ chế mở rộng Claude Code — chọn theo trigger.</p>
-  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 12px;">
+  <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">3 cách mở rộng Claude Code. Ví dụ vui: Claude là <em>nhân viên mới</em> — bạn cần đưa cẩm nang, thuê thực tập sinh, hay bắt buộc check-list?</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px;">
     <div class="feature-card" style="padding: 10px 12px;">
-      <h4 style="margin: 0; font-size: 14px;">Skills</h4>
-      <p style="margin: 2px 0 0; font-size: 10px; color: var(--c-muted);">Auto-load khi trigger trúng</p>
+      <h4 style="margin: 0; font-size: 14px;">Skills <span style="font-weight: 400; font-size: 10px; color: var(--c-muted);">— Cẩm nang</span></h4>
+      <p style="margin: 2px 0 0; font-size: 10px; color: var(--c-muted);">Tự bật khi gặp đúng task</p>
       <ul style="margin: 6px 0 0; font-size: 11px; padding-left: 14px; line-height: 1.35;">
-        <li>Folder hướng dẫn chuyên biệt</li>
-        <li>1 skill = 1 mục đích</li>
-        <li>Superpowers ecosystem</li>
+        <li>1 folder = 1 hướng dẫn chuyên biệt</li>
+        <li>Mỗi skill làm <strong>1 việc</strong> duy nhất</li>
+        <li>Ví dụ: skill "viết test", skill "review PR"</li>
       </ul>
     </div>
     <div class="feature-card" style="padding: 10px 12px;">
-      <h4 style="margin: 0; font-size: 14px;">Sub-agents</h4>
-      <p style="margin: 2px 0 0; font-size: 10px; color: var(--c-muted);">Context isolated, return kết quả</p>
+      <h4 style="margin: 0; font-size: 14px;">Sub-agents <span style="font-weight: 400; font-size: 10px; color: var(--c-muted);">— Thực tập sinh</span></h4>
+      <p style="margin: 2px 0 0; font-size: 10px; color: var(--c-muted);">Tách riêng bộ não, chỉ báo cáo kết quả</p>
       <ul style="margin: 6px 0 0; font-size: 11px; padding-left: 14px; line-height: 1.35;">
-        <li>Spawn agent con</li>
-        <li>Chỉ return kết quả cuối</li>
-        <li>Search: 200 tokens vs grep 40K</li>
+        <li>Giao việc nặng cho agent con</li>
+        <li>Agent chính <strong>không thấy</strong> log lằng nhằng</li>
+        <li>Search: 200 tokens (vs grep tay 40K)</li>
       </ul>
     </div>
     <div class="feature-card" style="padding: 10px 12px; background: var(--c-primary); color: var(--c-on-primary);">
-      <h4 style="margin: 0; font-size: 14px; color: var(--c-on-primary);">Hooks</h4>
-      <p style="margin: 2px 0 0; font-size: 10px; color: var(--c-on-primary); opacity: 0.85;">Deterministic shell command</p>
+      <h4 style="margin: 0; font-size: 14px; color: var(--c-on-primary);">Hooks <span style="font-weight: 400; font-size: 10px; opacity: 0.85;">— Luật cứng</span></h4>
+      <p style="margin: 2px 0 0; font-size: 10px; color: var(--c-on-primary); opacity: 0.85;">Lệnh shell chạy tự động, không thương lượng</p>
       <ul style="margin: 6px 0 0; font-size: 11px; padding-left: 14px; line-height: 1.35; color: var(--c-on-primary);">
-        <li>Pre/PostToolUse, Stop</li>
-        <li>100% compliance</li>
-        <li>Block + transform actions</li>
+        <li>Trước/sau khi Claude dùng tool</li>
+        <li>Tuân thủ <strong>100%</strong> (không "quên")</li>
+        <li>Chặn được hành động sai (vd: block <code>rm -rf</code>)</li>
       </ul>
     </div>
   </div>
-  <div style="margin-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start;">
+  <div style="margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start;">
     <table style="font-size: 11px; line-height: 1.3;">
       <thead><tr><th></th><th>CLAUDE.md</th><th>Hooks</th></tr></thead>
       <tbody>
-        <tr><td><strong>Compliance</strong></td><td>~80%</td><td>100%</td></tr>
-        <tr><td><strong>Type</strong></td><td>Advisory</td><td>Deterministic</td></tr>
-        <tr><td><strong>Trigger</strong></td><td>Claude cân nhắc</td><td>Shell tự chạy</td></tr>
+        <tr><td><strong>Tuân thủ</strong></td><td>~80% (Claude có thể bỏ qua)</td><td>100% (shell ép buộc)</td></tr>
+        <tr><td><strong>Loại</strong></td><td>Lời khuyên</td><td>Quy tắc cứng</td></tr>
+        <tr><td><strong>Kích hoạt</strong></td><td>Claude tự đọc &amp; cân nhắc</td><td>Shell chạy tự động</td></tr>
       </tbody>
     </table>
     <div>
-      <p style="font-size: 12px; margin: 0;"><strong>Decision rule:</strong></p>
+      <p style="font-size: 12px; margin: 0;"><strong>Quy tắc chọn:</strong></p>
       <ul style="margin: 4px 0 0; font-size: 11px; padding-left: 14px; line-height: 1.4;">
-        <li>Chạy <strong>MỖI LẦN</strong> không ngoại lệ → <strong>Hook</strong></li>
-        <li>Guidance Claude cân nhắc → <strong>CLAUDE.md</strong></li>
-        <li>Task-specific procedure → <strong>Skill</strong></li>
-        <li>Heavy work cần context riêng → <strong>Sub-agent</strong></li>
+        <li>Phải chạy <strong>MỖI LẦN</strong>, không bỏ sót → <strong>Hook</strong> (vd: lint trước commit)</li>
+        <li>Lời khuyên chung, Claude tự cân nhắc → <strong>CLAUDE.md</strong> (vd: code style team)</li>
+        <li>Quy trình cho 1 loại task cụ thể → <strong>Skill</strong> (vd: cách viết migration)</li>
+        <li>Việc nặng, sợ ngốn context chính → <strong>Sub-agent</strong> (vd: search toàn repo)</li>
       </ul>
     </div>
   </div>
