@@ -394,8 +394,15 @@ mdc: true
         <tr><td><strong>&gt; 300</strong></td><td>Skip section</td></tr>
       </tbody>
     </table>
-    <div style="background: var(--c-primary); color: var(--c-on-primary); padding: 8px 10px; border-radius: var(--r-sm); font-size: 11px; line-height: 1.45;">
-      <strong>Fix:</strong> Xóa tone/persona · push procedure → Skill · sai 2 lần → bảo Claude tự update · audit định kỳ.
+    <div style="background: var(--c-primary); color: var(--c-on-primary); padding: 10px 14px; border-radius: var(--r-lg); font-size: 11px; line-height: 1.5;">
+      <div style="font-weight: 600; font-size: 12px; margin-bottom: 4px;">Fix bloat — 5 bước</div>
+      <ol style="margin: 0; padding-left: 18px;">
+        <li><strong>Test mỗi dòng:</strong> "Xóa dòng này Claude có sai không?" Không → xóa.</li>
+        <li><strong>Xóa fluff:</strong> tone · persona · "be senior" · SOLID/DRY/clean code.</li>
+        <li><strong>Push → Skill:</strong> procedure 1 loại task (vd: viết migration) load on-demand.</li>
+        <li><strong>Push → Hook:</strong> rule cần 100% enforce (lint, test trước commit).</li>
+        <li><strong>Audit:</strong> sai 2 lần lặp → bảo Claude tự update CLAUDE.md.</li>
+      </ol>
     </div>
   </div>
 </div>
@@ -526,30 +533,6 @@ mdc: true
 
 ---
 
-<!-- SLIDE 24 — MCP -->
-
-<div class="slidev-layout">
-    <h2>MCP — Model Context Protocol</h2>
-  <p style="margin-top: 16px;">Giao thức kết nối tools ngoài.</p>
-  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 32px;">
-    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;"><img src="https://cdn.simpleicons.org/github/141413" alt="" style="height: 16px; width: 16px;" />GitHub</div>
-    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;"><img src="https://cdn.simpleicons.org/postgresql/141413" alt="" style="height: 16px; width: 16px;" />Postgres</div>
-    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;">💬 Slack</div>
-    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;"><img src="https://cdn.simpleicons.org/linear/141413" alt="" style="height: 16px; width: 16px;" />Linear</div>
-    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;"><img src="https://cdn.simpleicons.org/jira/141413" alt="" style="height: 16px; width: 16px;" />Jira</div>
-    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;"><img src="https://cdn.simpleicons.org/sentry/141413" alt="" style="height: 16px; width: 16px;" />Sentry</div>
-    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;"><img src="https://cdn.simpleicons.org/figma/141413" alt="" style="height: 16px; width: 16px;" />Figma</div>
-    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;">▶ Playwright</div>
-  </div>
-  <ul style="margin-top: 32px;">
-    <li>Mỗi server ăn 5-10K tokens schema</li>
-    <li>Tool Search auto-enable khi MCP &gt; 10% context</li>
-    <li>Bắt đầu 1-2 server đơn giản</li>
-  </ul>
-</div>
-
----
-
 <!-- SLIDE 25 — SKILLS + HOOKS -->
 
 <div class="slidev-layout">
@@ -587,6 +570,30 @@ mdc: true
   <div style="margin-top: 8px;">
     <p style="font-size: 11px; margin: 0;"><strong>Quy tắc chọn:</strong> phải chạy mỗi lần → <strong>Hook</strong> · lời khuyên chung → <strong>CLAUDE.md</strong> · quy trình 1 loại task → <strong>Skill</strong> · việc nặng tốn context → <strong>Sub-agent</strong>.</p>
   </div>
+</div>
+
+---
+
+<!-- SLIDE 24 — MCP -->
+
+<div class="slidev-layout">
+    <h2>MCP — Model Context Protocol</h2>
+  <p style="margin-top: 16px;">Giao thức kết nối tools ngoài.</p>
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 32px;">
+    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;"><img src="https://cdn.simpleicons.org/github/141413" alt="" style="height: 16px; width: 16px;" />GitHub</div>
+    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;"><img src="https://cdn.simpleicons.org/postgresql/141413" alt="" style="height: 16px; width: 16px;" />Postgres</div>
+    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;">💬 Slack</div>
+    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;"><img src="https://cdn.simpleicons.org/linear/141413" alt="" style="height: 16px; width: 16px;" />Linear</div>
+    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;"><img src="https://cdn.simpleicons.org/jira/141413" alt="" style="height: 16px; width: 16px;" />Jira</div>
+    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;"><img src="https://cdn.simpleicons.org/sentry/141413" alt="" style="height: 16px; width: 16px;" />Sentry</div>
+    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;"><img src="https://cdn.simpleicons.org/figma/141413" alt="" style="height: 16px; width: 16px;" />Figma</div>
+    <div class="badge-pill" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px;">▶ Playwright</div>
+  </div>
+  <ul style="margin-top: 32px;">
+    <li>Mỗi server ăn 5-10K tokens schema</li>
+    <li>Tool Search auto-enable khi MCP &gt; 10% context</li>
+    <li>Bắt đầu 1-2 server đơn giản</li>
+  </ul>
 </div>
 
 ---
