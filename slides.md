@@ -352,7 +352,6 @@ mdc: true
       <strong>Auto memory</strong> riêng: Claude tự viết learning per repo, load 200 dòng đầu.
     </div>
   </div>
-  <p style="margin-top: 4px; color: var(--c-muted); font-size: 10px; font-style: italic;">Source: "CLAUDE.md Best Practices" — Nick · youtu.be/x5WWFL0nIqk</p>
 </div>
 
 ---
@@ -408,7 +407,6 @@ mdc: true
     <h2>Plan Mode — Spec → Plan → Execute</h2>
     <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">Superpowers flow: brainstorm spec → plan task-by-task → subagent execute.</p>
   <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 14px;">
-
     <div class="feature-card" style="padding: 12px;">
       <div style="font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--c-primary);">Stage 1 · Spec</div>
       <h4 style="margin: 4px 0 0; font-size: 14px;">brainstorming</h4>
@@ -420,7 +418,6 @@ mdc: true
         <li><strong>HARD-GATE:</strong> no code trước khi spec approved</li>
       </ul>
     </div>
-
     <div class="feature-card" style="padding: 12px;">
       <div style="font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--c-primary);">Stage 2 · Plan</div>
       <h4 style="margin: 4px 0 0; font-size: 14px;">writing-plans</h4>
@@ -432,7 +429,6 @@ mdc: true
         <li>Save <code>docs/superpowers/plans/YYYY-MM-DD-&lt;feature&gt;.md</code></li>
       </ul>
     </div>
-
     <div class="feature-card" style="padding: 12px;">
       <div style="font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--c-primary);">Stage 3 · Execute</div>
       <h4 style="margin: 4px 0 0; font-size: 14px;">subagent-driven-development</h4>
@@ -444,7 +440,6 @@ mdc: true
         <li>Sai 2 lần → <code>/rewind</code> về plan</li>
       </ul>
     </div>
-
   </div>
   <div style="margin-top: 10px; background: var(--c-canvas-soft); padding: 8px 12px; border-radius: var(--r-sm); font-size: 11px;">
     <strong>Khi nào dùng:</strong> multi-file · kiến trúc · bug &gt;1 giả thuyết. <strong>Khi skip:</strong> 1-line fix · typo · doc rename.
