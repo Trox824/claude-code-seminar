@@ -318,45 +318,44 @@ mdc: true
 
 ---
 
-<!-- SLIDE 16 — CLAUDE.md + AUTO MEMORY -->
+<!-- SLIDE 16 — CLAUDE.md 10 SECTIONS -->
 
 <div class="slidev-layout">
-    <h2>CLAUDE.md + Auto Memory</h2>
-  <p style="margin-top: 8px; color: var(--c-muted); font-size: 13px;">2 hệ bộ nhớ load mỗi session — official Anthropic docs.</p>
-  <div style="display: grid; grid-template-columns: 3fr 2fr; gap: 24px; margin-top: 16px;">
-    <table style="font-size: 12px;">
-      <thead>
-        <tr><th></th><th>CLAUDE.md</th><th>Auto memory</th></tr>
-      </thead>
-      <tbody>
-        <tr><td><strong>Ai viết</strong></td><td>Bạn</td><td>Claude</td></tr>
-        <tr><td><strong>Nội dung</strong></td><td>Instructions, rules</td><td>Learnings, patterns</td></tr>
-        <tr><td><strong>Scope</strong></td><td>Project · user · org</td><td>Per repo</td></tr>
-        <tr><td><strong>Load</strong></td><td>Full mỗi session</td><td>First 200 lines / 25KB</td></tr>
-        <tr><td><strong>Dùng cho</strong></td><td>Standards, workflow, architecture</td><td>Build cmds, debug insights</td></tr>
-      </tbody>
-    </table>
+  <h2>CLAUDE.md — 10 Section Structure</h2>
+  <p style="margin-top: 2px; color: var(--c-muted); font-size: 11px;">Init = first draft. Refine theo 10 section · &lt; 200 dòng · markdown.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px;">
     <div>
-      <div class="feature-card" style="padding: 12px;">
-        <h4 style="font-size: 13px; margin: 0;">Khi nào add CLAUDE.md</h4>
-        <ul style="margin-top: 4px; font-size: 12px; padding-left: 16px;">
-          <li>Claude sai cùng lỗi lần 2</li>
-          <li>Code review bắt</li>
-          <li>Gõ lại cùng correction</li>
-          <li>Teammate mới cần cùng context</li>
-        </ul>
-      </div>
-      <div class="feature-card" style="padding: 12px; margin-top: 10px;">
-        <h4 style="font-size: 13px; margin: 0;">Best practices</h4>
-        <ul style="margin-top: 4px; font-size: 12px; padding-left: 16px;">
-          <li><strong>&lt; 200 dòng</strong> / file</li>
-          <li>Cụ thể: <code>"2-space indent"</code></li>
-          <li><code>/init</code> · <code>/memory</code></li>
-          <li>Commit vào git</li>
-        </ul>
-      </div>
+      <table style="font-size: 11px;">
+        <tbody>
+          <tr><td><strong>1</strong></td><td><strong>Project overview</strong></td><td>Plain language: cái gì, cho ai, constraint quan trọng. Cao nhất giá trị.</td></tr>
+          <tr><td><strong>2</strong></td><td><strong>Tech stack</strong></td><td>Framework, language, styling — và <em>không dùng gì</em>. Tránh wrong-but-valid lib.</td></tr>
+          <tr><td><strong>3</strong></td><td><strong>Architecture</strong></td><td>Major directory, responsibility, data flow, code mới đặt đâu.</td></tr>
+          <tr><td><strong>4</strong></td><td><strong>Coding conventions</strong></td><td>Mọi thứ tác động daily code gen. Quan trọng thứ 2.</td></tr>
+          <tr><td><strong>5</strong></td><td><strong>UI · design system</strong></td><td>Style, spacing, typo, interaction, a11y. Front-end gold.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <table style="font-size: 11px;">
+        <tbody>
+          <tr><td><strong>6</strong></td><td><strong>Content · copy</strong></td><td>Tone: concise/detailed, technical/plain. Landing + product work.</td></tr>
+          <tr><td><strong>7</strong></td><td><strong>Testing · quality bar</strong></td><td>Test gì, khi nào bắt buộc, "done" định nghĩa thế nào.</td></tr>
+          <tr><td><strong>8</strong></td><td><strong>File placement rules</strong></td><td>Khi nào tạo file mới · edit · abstraction · naming pattern.</td></tr>
+          <tr><td><strong>9</strong></td><td><strong>Safe change rules</strong></td><td>Cấm sửa casually. Giảm "smart nhưng risky" edit.</td></tr>
+          <tr><td><strong>10</strong></td><td><strong>Specific commands</strong></td><td>Real commands CLI hay dùng. Operational context.</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
+  <div style="margin-top: 8px; display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
+    <div style="background: var(--c-primary); color: var(--c-on-primary); padding: 8px 12px; border-radius: var(--r-sm); font-size: 11px;">
+      <strong>Workflow:</strong> <code>/init</code> generate first draft → refine 10 section → giữ &lt; 200 dòng → audit khi sai lặp.
+    </div>
+    <div style="background: var(--c-canvas-soft); padding: 8px 12px; border-radius: var(--r-sm); font-size: 11px;">
+      <strong>Auto memory</strong> riêng: Claude tự viết learning per repo, load 200 dòng đầu.
+    </div>
+  </div>
+  <p style="margin-top: 4px; color: var(--c-muted); font-size: 10px; font-style: italic;">Source: "CLAUDE.md Best Practices" — Nick · youtu.be/x5WWFL0nIqk</p>
 </div>
 
 ---
