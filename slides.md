@@ -1029,16 +1029,18 @@ mdc: true
   </div>
   <div style="margin-top: 10px; display: grid; grid-template-columns: 3fr 2fr; gap: 10px;">
     <ul style="margin: 0; font-size: 11px; line-height: 1.45; padding-left: 16px;">
-      <li><strong>Cache TTL 5 phút</strong> — stable prefix hit ~90%. Skill load mid-turn bust cache.</li>
-      <li><strong>Thinking:</strong> <code>think</code> &lt; <code>think hard</code> &lt; <code>ultrathink</code>. Bậc cao chỉ khi decision phức tạp.</li>
-      <li><strong>Headless</strong> <code>claude -p "..."</code> cho CI/script.</li>
-      <li><strong>Sub-agent isolation</strong> → cache reuse cao hơn session dài.</li>
+      <li><strong>Effort slider</strong> (UI / <code>/thinking</code>) — Low · Medium · High · Extra High · Max. Cao = nghĩ kỹ hơn, tốn token hơn. High đủ cho 90% task; Max cho debug đa file / architecture.</li>
+      <li><strong>Compact ở 40-50%</strong> context, không đợi 95% — agent đỡ "ngu" giữa session.</li>
+      <li><strong>Headless</strong> <code>claude -p "..."</code> cho CI / cron / git hook.</li>
+      <li><strong>Sub-agent isolation</strong> = context riêng → main session không phình.</li>
     </ul>
     <div style="background: #181715; color: #f0eee6; border-radius: 6px; padding: 8px 10px; font-family: var(--font-mono); font-size: 10px; line-height: 1.45;">
       <div style="color: #cc785c;"># switch model</div>
       <div>/model haiku|sonnet|opus</div>
+      <div style="margin-top: 4px; color: #cc785c;"># effort (UI slider)</div>
+      <div>Low → Max</div>
       <div style="margin-top: 4px; color: #cc785c;"># cost</div>
-      <div>/cost <span style="color: #b8b3a0;">→ $2.14 · cache 87%</span></div>
+      <div>/cost <span style="color: #b8b3a0;">→ $2.14</span></div>
       <div style="margin-top: 4px; color: #cc785c;"># headless</div>
       <div>claude -p "fix lint"</div>
     </div>
