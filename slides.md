@@ -425,7 +425,7 @@ mdc: true
       <ul style="margin: 4px 0 0; padding-left: 14px; font-size: 10.5px; line-height: 1.4;">
         <li>Fresh subagent / task — context isolation</li>
         <li>Two-stage review giữa task</li>
-        <li><kbd>Shift</kbd>+<kbd>Tab</kbd> bật Plan Mode UI</li>
+        <li>Superpowers tự bật Plan Mode — không cần <kbd>Shift</kbd>+<kbd>Tab</kbd></li>
         <li>Sai 2 lần → <code>/rewind</code> về plan</li>
       </ul>
     </div>
