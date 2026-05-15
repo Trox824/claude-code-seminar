@@ -188,7 +188,7 @@ mdc: true
     </div>
   </div>
   <p style="margin-top: 32px; color: var(--c-on-primary); font-size: 16px;">
-    Mỗi bước có <strong>superpowers skill</strong> + <strong>verification loop</strong>. Bước sai → rewind, không correct.
+    Mỗi bước có <strong>verification loop</strong>. Bước sai → rewind, không correct.
   </p>
 </div>
 
