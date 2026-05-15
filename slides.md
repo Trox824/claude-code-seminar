@@ -356,26 +356,32 @@ mdc: true
   <h2>CLAUDE.md Anti-Patterns</h2>
   <p style="margin-top: 2px; color: var(--c-muted); font-size: 11px;">~150-200 instruction budget. Past line 150 mất adherence · line 250 skip cả section.</p>
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px;">
-    <div style="padding: 14px 16px; background: var(--c-surface-card); border: 1px solid var(--c-hairline); border-radius: var(--r-lg);">
-      <div style="display: inline-block; background: var(--c-primary); color: var(--c-on-primary); font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: var(--r-pill); letter-spacing: 0.5px;">BLOAT · 340 DÒNG</div>
-      <div style="margin-top: 8px; font-family: var(--font-mono); font-size: 10px; line-height: 1.5; color: var(--c-ink);">
-        ## Tone — "be senior engineer"<br/>
-        ## Persona — "you are pragmatic"<br/>
-        ## Principles — clean code, SOLID, DRY<br/>
-        ## Never — be sloppy, skip tests<br/>
-        ...
+    <div style="padding: 16px; background: #181715; border-radius: var(--r-lg);">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+        <div style="display: inline-block; background: #cc785c; color: #ffffff; font-size: 10px; font-weight: 500; padding: 3px 10px; border-radius: var(--r-pill); letter-spacing: 1.2px; text-transform: uppercase;">Bloat · 340 dòng</div>
+        <span style="font-family: var(--font-mono); font-size: 9px; color: #a09d96;">CLAUDE.md</span>
       </div>
-      <p style="margin: 8px 0 0; font-size: 10px; color: var(--c-muted);">→ Personality fluff. Claude tự cố làm tốt. Dilute rule technical thực sự.</p>
+      <div style="background: #1f1e1b; border-radius: var(--r-md); padding: 12px; font-family: var(--font-mono); font-size: 10px; line-height: 1.65; color: #faf9f5;">
+        <div><span style="color: #e8a55a;">##</span> Tone — <span style="color: #5db8a6;">"be senior engineer"</span></div>
+        <div><span style="color: #e8a55a;">##</span> Persona — <span style="color: #5db8a6;">"you are pragmatic"</span></div>
+        <div><span style="color: #e8a55a;">##</span> Principles — clean code, SOLID, DRY</div>
+        <div><span style="color: #e8a55a;">##</span> Never — be sloppy, skip tests</div>
+        <div style="color: #a09d96;">...</div>
+      </div>
+      <p style="margin: 10px 0 0; font-size: 10px; color: #a09d96;">→ Personality fluff. Claude tự cố làm tốt. Dilute rule technical thực sự.</p>
     </div>
-    <div style="padding: 14px 16px; background: var(--c-surface-dark); border-radius: var(--r-lg);">
-      <div style="display: inline-block; background: var(--c-accent-teal); color: var(--c-surface-dark); font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: var(--r-pill); letter-spacing: 0.5px;">SPECIFIC · 80 DÒNG</div>
-      <div style="margin-top: 8px; font-family: var(--font-mono); font-size: 10px; line-height: 1.5; color: var(--c-on-dark);">
-        ## Commands — pnpm test · db:migrate<br/>
-        ## Gotchas — Stripe webhook verify ở<br/>
-        &nbsp;&nbsp;routes/webhooks/stripe.ts:42<br/>
-        ## Don't — touch migrations/* không hỏi
+    <div style="padding: 16px; background: #181715; border-radius: var(--r-lg);">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+        <div style="display: inline-block; background: #5db8a6; color: #181715; font-size: 10px; font-weight: 500; padding: 3px 10px; border-radius: var(--r-pill); letter-spacing: 1.2px; text-transform: uppercase;">Specific · 80 dòng</div>
+        <span style="font-family: var(--font-mono); font-size: 9px; color: #a09d96;">CLAUDE.md</span>
       </div>
-      <p style="margin: 8px 0 0; font-size: 10px; color: var(--c-on-dark-soft);">→ "Claude sẽ sai gì nếu thiếu line này?" Có → giữ. Không → xóa.</p>
+      <div style="background: #1f1e1b; border-radius: var(--r-md); padding: 12px; font-family: var(--font-mono); font-size: 10px; line-height: 1.65; color: #faf9f5;">
+        <div><span style="color: #e8a55a;">##</span> Commands — <span style="color: #5db8a6;">pnpm test</span> · <span style="color: #5db8a6;">db:migrate</span></div>
+        <div><span style="color: #e8a55a;">##</span> Gotchas — Stripe webhook verify ở</div>
+        <div>&nbsp;&nbsp;<span style="color: #cc785c;">routes/webhooks/stripe.ts:42</span></div>
+        <div><span style="color: #e8a55a;">##</span> Don't — touch <span style="color: #cc785c;">migrations/*</span> không hỏi</div>
+      </div>
+      <p style="margin: 10px 0 0; font-size: 10px; color: #a09d96;">→ "Claude sẽ sai gì nếu thiếu line này?" Có → giữ. Không → xóa.</p>
     </div>
   </div>
   <div style="margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
@@ -547,54 +553,38 @@ mdc: true
 
 <div class="slidev-layout">
   <h2>Skills · Sub-agents · Hooks</h2>
-  <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">3 cách mở rộng Claude Code. Ví dụ vui: Claude là <em>nhân viên mới</em> — bạn cần đưa cẩm nang, thuê thực tập sinh, hay bắt buộc check-list?</p>
-  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px;">
-    <div class="feature-card" style="padding: 10px 12px;">
-      <h4 style="margin: 0; font-size: 14px;">Skills <span style="font-weight: 400; font-size: 10px; color: var(--c-muted);">— Cẩm nang</span></h4>
+  <p style="margin-top: 2px; color: var(--c-muted); font-size: 11px;">3 cách mở rộng. Claude = nhân viên mới → cẩm nang · thực tập sinh · check-list.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 8px;">
+    <div class="feature-card" style="padding: 8px 10px;">
+      <h4 style="margin: 0; font-size: 13px;">Skills <span style="font-weight: 400; font-size: 10px; color: var(--c-muted);">— Cẩm nang</span></h4>
       <p style="margin: 2px 0 0; font-size: 10px; color: var(--c-muted);">Tự bật khi gặp đúng task</p>
-      <ul style="margin: 6px 0 0; font-size: 11px; padding-left: 14px; line-height: 1.35;">
-        <li>1 folder = 1 hướng dẫn chuyên biệt</li>
-        <li>Mỗi skill làm <strong>1 việc</strong> duy nhất</li>
-        <li>Ví dụ: skill "viết test", skill "review PR"</li>
+      <ul style="margin: 4px 0 0; font-size: 10.5px; padding-left: 14px; line-height: 1.35;">
+        <li>1 folder = 1 hướng dẫn</li>
+        <li>Mỗi skill <strong>1 việc</strong></li>
+        <li>Vd: "viết test", "review PR"</li>
       </ul>
     </div>
-    <div class="feature-card" style="padding: 10px 12px;">
-      <h4 style="margin: 0; font-size: 14px;">Sub-agents <span style="font-weight: 400; font-size: 10px; color: var(--c-muted);">— Thực tập sinh</span></h4>
-      <p style="margin: 2px 0 0; font-size: 10px; color: var(--c-muted);">Tách riêng bộ não, chỉ báo cáo kết quả</p>
-      <ul style="margin: 6px 0 0; font-size: 11px; padding-left: 14px; line-height: 1.35;">
+    <div class="feature-card" style="padding: 8px 10px;">
+      <h4 style="margin: 0; font-size: 13px;">Sub-agents <span style="font-weight: 400; font-size: 10px; color: var(--c-muted);">— Thực tập sinh</span></h4>
+      <p style="margin: 2px 0 0; font-size: 10px; color: var(--c-muted);">Tách bộ não, chỉ báo cáo kết quả</p>
+      <ul style="margin: 4px 0 0; font-size: 10.5px; padding-left: 14px; line-height: 1.35;">
         <li>Giao việc nặng cho agent con</li>
-        <li>Agent chính <strong>không thấy</strong> log lằng nhằng</li>
-        <li>Search: 200 tokens (vs grep tay 40K)</li>
+        <li>Main <strong>không thấy</strong> log thô</li>
+        <li>Search: 200 tok vs grep 40K</li>
       </ul>
     </div>
-    <div class="feature-card" style="padding: 10px 12px; background: var(--c-primary); color: var(--c-on-primary);">
-      <h4 style="margin: 0; font-size: 14px; color: var(--c-on-primary);">Hooks <span style="font-weight: 400; font-size: 10px; opacity: 0.85;">— Luật cứng</span></h4>
-      <p style="margin: 2px 0 0; font-size: 10px; color: var(--c-on-primary); opacity: 0.85;">Lệnh shell chạy tự động, không thương lượng</p>
-      <ul style="margin: 6px 0 0; font-size: 11px; padding-left: 14px; line-height: 1.35; color: var(--c-on-primary);">
+    <div class="feature-card" style="padding: 8px 10px; background: var(--c-primary); color: var(--c-on-primary);">
+      <h4 style="margin: 0; font-size: 13px; color: var(--c-on-primary);">Hooks <span style="font-weight: 400; font-size: 10px; opacity: 0.85;">— Luật cứng</span></h4>
+      <p style="margin: 2px 0 0; font-size: 10px; color: var(--c-on-primary); opacity: 0.85;">Shell tự chạy, không thương lượng</p>
+      <ul style="margin: 4px 0 0; font-size: 10.5px; padding-left: 14px; line-height: 1.35; color: var(--c-on-primary);">
         <li>Trước/sau khi Claude dùng tool</li>
-        <li>Tuân thủ <strong>100%</strong> (không "quên")</li>
-        <li>Chặn được hành động sai (vd: block <code>rm -rf</code>)</li>
+        <li>Tuân thủ <strong>100%</strong></li>
+        <li>Block <code>rm -rf</code> etc.</li>
       </ul>
     </div>
   </div>
-  <div style="margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start;">
-    <table style="font-size: 11px; line-height: 1.3;">
-      <thead><tr><th></th><th>CLAUDE.md</th><th>Hooks</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Tuân thủ</strong></td><td>~80% (Claude có thể bỏ qua)</td><td>100% (shell ép buộc)</td></tr>
-        <tr><td><strong>Loại</strong></td><td>Lời khuyên</td><td>Quy tắc cứng</td></tr>
-        <tr><td><strong>Kích hoạt</strong></td><td>Claude tự đọc &amp; cân nhắc</td><td>Shell chạy tự động</td></tr>
-      </tbody>
-    </table>
-    <div>
-      <p style="font-size: 12px; margin: 0;"><strong>Quy tắc chọn:</strong></p>
-      <ul style="margin: 4px 0 0; font-size: 11px; padding-left: 14px; line-height: 1.4;">
-        <li>Phải chạy <strong>MỖI LẦN</strong>, không bỏ sót → <strong>Hook</strong> (vd: lint trước commit)</li>
-        <li>Lời khuyên chung, Claude tự cân nhắc → <strong>CLAUDE.md</strong> (vd: code style team)</li>
-        <li>Quy trình cho 1 loại task cụ thể → <strong>Skill</strong> (vd: cách viết migration)</li>
-        <li>Việc nặng, sợ ngốn context chính → <strong>Sub-agent</strong> (vd: search toàn repo)</li>
-      </ul>
-    </div>
+  <div style="margin-top: 8px;">
+    <p style="font-size: 11px; margin: 0;"><strong>Quy tắc chọn:</strong> phải chạy mỗi lần → <strong>Hook</strong> · lời khuyên chung → <strong>CLAUDE.md</strong> · quy trình 1 loại task → <strong>Skill</strong> · việc nặng tốn context → <strong>Sub-agent</strong>.</p>
   </div>
 </div>
 
@@ -647,49 +637,60 @@ mdc: true
 <!-- SLIDE A1b — SUB-AGENT DEVELOPMENT -->
 
 <div class="slidev-layout">
-  <h2>Sub-agent Development</h2>
-  <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">Tự build sub-agent — markdown file + frontmatter, không cần code.</p>
+  <h2>Sub-agent — Dùng, Không Cần Define</h2>
+  <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">Plugin đã ship sẵn sub-agent. Gõ slash command hoặc bảo Claude spawn — xong.</p>
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px;">
     <div>
-      <h4 style="margin: 0; font-size: 14px;">Anatomy</h4>
+      <h4 style="margin: 0; font-size: 14px;">3 cách invoke</h4>
       <ul style="margin-top: 6px; font-size: 12px;">
-        <li><code>.claude/agents/&lt;name&gt;.md</code> — project scope</li>
-        <li><code>~/.claude/agents/</code> — user scope, share mọi repo</li>
-        <li>Frontmatter: <code>name</code> · <code>description</code> · <code>tools</code> · <code>model</code></li>
-        <li>Body = system prompt cho sub-agent</li>
+        <li><strong>Slash command</strong> — <code>/code-review:code-review</code> chạy ngay</li>
+        <li><strong>Natural language</strong> — "review PR này" → Claude tự pick agent</li>
+        <li><strong>Explicit</strong> — "dùng code-review agent để check diff"</li>
       </ul>
-      <h4 style="margin: 12px 0 0; font-size: 14px;">Design rule</h4>
+      <h4 style="margin: 12px 0 0; font-size: 14px;">Tại sao không cần define</h4>
       <ul style="margin-top: 6px; font-size: 12px;">
-        <li><strong>Description</strong> rõ trigger — main agent dựa vào để chọn</li>
-        <li>Tool allowlist tối thiểu — security + tốc độ</li>
-        <li>Model nhỏ (Haiku) cho task lookup · Opus cho reasoning</li>
-        <li>Prompt body: role · constraint · output format</li>
+        <li>Plugin ecosystem ship sẵn — <code>code-review</code>, <code>feature-dev</code>, <code>security-review</code>, <code>Explore</code>, <code>Plan</code></li>
+        <li>Cộng đồng iterate prompt → tốt hơn tự viết</li>
+        <li><code>/plugin</code> install · update qua marketplace</li>
+        <li>Tự define chỉ khi domain rất riêng (DB schema nội bộ, infra cụ thể)</li>
       </ul>
     </div>
     <div>
-      <div style="background: #181715; color: #f0eee6; border-radius: 12px; padding: 12px 14px; font-family: var(--font-mono); font-size: 10.5px; line-height: 1.5;">
-        <div style="color: #cc785c;"># .claude/agents/db-migration-reviewer.md</div>
-        <div style="margin-top: 4px;">---</div>
-        <div>name: db-migration-reviewer</div>
-        <div>description: Review SQL migration cho</div>
-        <div style="padding-left: 14px;">safety. Trigger khi diff chứa</div>
-        <div style="padding-left: 14px;">file <code>migrations/*.sql</code>.</div>
-        <div>tools: Read, Grep, Bash</div>
-        <div>model: sonnet</div>
-        <div>---</div>
-        <div style="margin-top: 4px;">Bạn là DBA. Check:</div>
-        <div>- NOT NULL không default → block</div>
-        <div>- Index trên cột &gt;10M row → CONCURRENTLY</div>
-        <div>- Lock escalation risk</div>
-        <div>Output: PASS/BLOCK + reason.</div>
+      <div style="background: #181715; border-radius: 12px; padding: 16px; font-family: var(--font-mono); font-size: 10.5px; line-height: 1.6; color: #faf9f5;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+          <span style="background: #cc785c; color: #ffffff; padding: 3px 10px; border-radius: 9999px; font-size: 10px; font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase;">Example</span>
+          <span style="color: #a09d96; font-size: 9px;">terminal</span>
+        </div>
+        <div style="background: #1f1e1b; border-radius: 8px; padding: 12px;">
+          <div><span style="color: #5db8a6;">›</span> <span style="color: #e8a55a;">/code-review:code-review</span></div>
+          <div style="color: #a09d96; margin-top: 4px;">  Spawning sub-agent...</div>
+          <div style="color: #a09d96;">  Context isolated · ~200 tok report</div>
+          <div style="margin-top: 8px; color: #5db8a6;">› review PR #142 dùm</div>
+          <div style="color: #a09d96; margin-top: 4px;">  → pick <span style="color: #e8a55a;">code-review</span> agent</div>
+          <div style="color: #a09d96;">  → spawn fresh context</div>
+          <div style="margin-top: 8px;">PASS · 2 nit, 0 blocker</div>
+          <div>BLOCK: <span style="color: #cc785c;">auth.ts:42</span> — token expiry off-by-one</div>
+        </div>
       </div>
-      <ul style="margin-top: 8px; font-size: 12px;">
-        <li><code>/agents</code> — UI list · edit · test sub-agent</li>
-        <li>Invoke: <code>Agent(subagent_type: "db-migration-reviewer", ...)</code></li>
-        <li>Iterate prompt như skill — eval bằng case thật</li>
+      <ul style="margin-top: 10px; font-size: 12px;">
+        <li><code>/plugin marketplace</code> — browse sub-agent có sẵn</li>
+        <li>Main agent <strong>không thấy</strong> log nội bộ — chỉ nhận report</li>
+        <li>Token: 200 (vs grep tay 40K)</li>
       </ul>
     </div>
   </div>
+</div>
+
+---
+
+<!-- SLIDE A1c — DEMO IMPLEMENTATION -->
+
+<div class="slidev-layout coral" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+  <span class="badge-coral" style="background: var(--c-on-primary); color: var(--c-primary);">Live Demo</span>
+  <h1 style="margin-top: 24px; color: var(--c-on-primary);">Demo 3</h1>
+  <h3 style="color: var(--c-on-primary); font-size: 28px; margin-top: 16px;">Sub-agent Implementation</h3>
+  <p style="margin-top: 24px; color: var(--c-on-primary); font-size: 16px; max-width: 720px; line-height: 1.5;">Build custom sub-agent từ <code>.claude/agents/</code> → test bằng <code>/agents</code> → invoke parallel từ main agent.</p>
+  <p style="margin-top: 16px; color: var(--c-on-primary); font-size: 14px; opacity: 0.85;">~10 phút</p>
 </div>
 
 ---
@@ -953,11 +954,11 @@ mdc: true
 
 ---
 
-<!-- SLIDE 26 — DEMO 3 -->
+<!-- SLIDE 26 — DEMO 2 -->
 
 <div class="slidev-layout coral" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
   <span class="badge-coral" style="background: var(--c-on-primary); color: var(--c-primary);">Live Demo</span>
-  <h1 style="margin-top: 24px; color: var(--c-on-primary);">Demo 3</h1>
+  <h1 style="margin-top: 24px; color: var(--c-on-primary);">Demo 2</h1>
   <h3 style="color: var(--c-on-primary); font-size: 28px; margin-top: 16px;">Debug + E2E Test</h3>
   <p style="margin-top: 32px; color: var(--c-on-primary); font-size: 18px;">~10 phút</p>
 </div>
@@ -1100,52 +1101,48 @@ mdc: true
 
 <div class="slidev-layout">
   <h2>Advanced Review Pipeline</h2>
-  <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">Agent review agent — human review cuối. Mỗi layer khác nhau.</p>
-  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 12px;">
-    <div class="feature-card" style="padding: 10px 12px;">
-      <div style="font-size: 10px; color: var(--c-primary); letter-spacing: 1.2px; text-transform: uppercase;">Layer 1 · Inline</div>
-      <h4 style="margin: 4px 0 0; font-size: 13px;">/simplify</h4>
-      <ul style="margin: 6px 0 0; font-size: 11px; padding-left: 14px; line-height: 1.45;">
-        <li>Scan diff, bắt dup logic</li>
+  <p style="margin-top: 2px; color: var(--c-muted); font-size: 11px;">Agent review agent — human review cuối.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 8px;">
+    <div class="feature-card" style="padding: 8px 10px;">
+      <div style="font-size: 9px; color: var(--c-primary); letter-spacing: 1.2px; text-transform: uppercase;">Layer 1 · Inline</div>
+      <h4 style="margin: 2px 0 0; font-size: 12px;">/simplify</h4>
+      <ul style="margin: 4px 0 0; font-size: 10.5px; padding-left: 14px; line-height: 1.35;">
+        <li>Scan diff, dup logic</li>
         <li>Dead code, over-engineer</li>
-        <li>Auto-fix issue</li>
-        <li>Chạy trước commit</li>
+        <li>Auto-fix · trước commit</li>
       </ul>
     </div>
-    <div class="feature-card" style="padding: 10px 12px;">
-      <div style="font-size: 10px; color: var(--c-primary); letter-spacing: 1.2px; text-transform: uppercase;">Layer 2 · Subagent</div>
-      <h4 style="margin: 4px 0 0; font-size: 13px;">code-reviewer · security-review</h4>
-      <ul style="margin: 6px 0 0; font-size: 11px; padding-left: 14px; line-height: 1.45;">
-        <li>Confidence-based filter — chỉ báo issue chắc</li>
+    <div class="feature-card" style="padding: 8px 10px;">
+      <div style="font-size: 9px; color: var(--c-primary); letter-spacing: 1.2px; text-transform: uppercase;">Layer 2 · Subagent</div>
+      <h4 style="margin: 2px 0 0; font-size: 12px;">code-reviewer · security-review</h4>
+      <ul style="margin: 4px 0 0; font-size: 10.5px; padding-left: 14px; line-height: 1.35;">
+        <li>Confidence filter — issue chắc</li>
         <li>Independent từ author agent</li>
-        <li><code>/security-review</code> branch pending</li>
-        <li>Spawn parallel với feature-dev</li>
+        <li>Spawn parallel feature-dev</li>
       </ul>
     </div>
-    <div class="feature-card" style="padding: 10px 12px; background: var(--c-primary); color: var(--c-on-primary);">
-      <div style="font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase;">Layer 3 · Cloud</div>
-      <h4 style="margin: 4px 0 0; font-size: 13px; color: var(--c-on-primary);">/ultrareview</h4>
-      <ul style="margin: 6px 0 0; font-size: 11px; padding-left: 14px; line-height: 1.45;">
+    <div class="feature-card" style="padding: 8px 10px; background: var(--c-primary); color: var(--c-on-primary);">
+      <div style="font-size: 9px; letter-spacing: 1.2px; text-transform: uppercase;">Layer 3 · Cloud</div>
+      <h4 style="margin: 2px 0 0; font-size: 12px; color: var(--c-on-primary);">/ultrareview</h4>
+      <ul style="margin: 4px 0 0; font-size: 10.5px; padding-left: 14px; line-height: 1.35;">
         <li>Multi-agent cloud review</li>
         <li>Local branch hoặc PR#</li>
-        <li>User-triggered, billed</li>
-        <li>Before merge big change</li>
+        <li>User-triggered · before merge</li>
       </ul>
     </div>
   </div>
-  <div style="margin-top: 12px; display: grid; grid-template-columns: 3fr 2fr; gap: 12px;">
+  <div style="margin-top: 8px; display: grid; grid-template-columns: 3fr 2fr; gap: 10px;">
     <div>
-      <h4 style="margin: 0; font-size: 13px;">Hook-enforced gates</h4>
-      <ul style="margin-top: 4px; font-size: 12px; line-height: 1.45;">
-        <li><strong>PreToolUse</strong> Bash <code>git commit</code> → require diff review confirmation</li>
-        <li><strong>PostToolUse</strong> Edit → auto run formatter + linter</li>
-        <li><strong>Stop</strong> hook → run unit test, block "done" if red</li>
-        <li><strong>Audit:</strong> agent xóa code không lý do? File ngoài scope plan?</li>
+      <h4 style="margin: 0; font-size: 12px;">Hook-enforced gates</h4>
+      <ul style="margin-top: 2px; font-size: 10.5px; line-height: 1.4; padding-left: 14px;">
+        <li><strong>PreToolUse</strong> Bash <code>git commit</code> → diff review confirm</li>
+        <li><strong>PostToolUse</strong> Edit → formatter + linter</li>
+        <li><strong>Stop</strong> hook → unit test, block "done" if red</li>
+        <li><strong>Audit:</strong> xóa code không lý do? File ngoài scope?</li>
       </ul>
     </div>
-    <div class="callout-coral" style="padding: 12px 14px;">
-      <strong>Golden rule:</strong> Không hiểu code agent viết → <strong>ĐỪNG COMMIT.</strong><br/>
-      <span style="font-size: 11px;">Review pipeline = filter, không thay người ra quyết định cuối.</span>
+    <div class="callout-coral" style="padding: 8px 12px; font-size: 11px; line-height: 1.4;">
+      <strong>Golden rule:</strong> Không hiểu code agent viết → <strong>ĐỪNG COMMIT.</strong> Review pipeline = filter, không thay người.
     </div>
   </div>
 </div>
