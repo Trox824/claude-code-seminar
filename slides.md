@@ -621,33 +621,55 @@ mdc: true
 
 <div class="slidev-layout">
     <h2>Skills · Sub-agents · Hooks</h2>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px;">
-    <div class="feature-card">
-      <h4>Skills</h4>
-      <ul style="margin-top: 8px; font-size: 14px;">
-        <li>Folder hướng dẫn chuyên biệt, auto-load khi trigger</li>
-        <li>Chia nhỏ 1 skill = 1 mục đích</li>
-        <li>Superpowers ecosystem = source có sẵn</li>
+    <p style="margin-top: 8px; color: var(--c-muted); font-size: 13px;">3 cơ chế mở rộng Claude Code — chọn theo trigger.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 16px;">
+    <div class="feature-card" style="padding: 14px;">
+      <h4 style="margin: 0; font-size: 15px;">Skills</h4>
+      <p style="margin-top: 4px; font-size: 11px; color: var(--c-muted);">Auto-load khi trigger trúng</p>
+      <ul style="margin-top: 8px; font-size: 12px; padding-left: 16px;">
+        <li>Folder hướng dẫn chuyên biệt</li>
+        <li>1 skill = 1 mục đích</li>
+        <li>Superpowers ecosystem</li>
       </ul>
     </div>
-    <div class="feature-card">
-      <h4>Sub-agents</h4>
-      <ul style="margin-top: 8px; font-size: 14px;">
-        <li>Spawn agent con, context riêng</li>
+    <div class="feature-card" style="padding: 14px;">
+      <h4 style="margin: 0; font-size: 15px;">Sub-agents</h4>
+      <p style="margin-top: 4px; font-size: 11px; color: var(--c-muted);">Context isolated, return kết quả</p>
+      <ul style="margin-top: 8px; font-size: 12px; padding-left: 16px;">
+        <li>Spawn agent con</li>
         <li>Chỉ return kết quả cuối</li>
-        <li>Search codebase: 200 tokens vs grep 40K</li>
+        <li>Search: 200 tokens vs grep 40K</li>
+      </ul>
+    </div>
+    <div class="feature-card" style="padding: 14px; background: var(--c-primary); color: var(--c-on-primary);">
+      <h4 style="margin: 0; font-size: 15px; color: var(--c-on-primary);">Hooks</h4>
+      <p style="margin-top: 4px; font-size: 11px; color: var(--c-on-primary); opacity: 0.85;">Deterministic shell command</p>
+      <ul style="margin-top: 8px; font-size: 12px; padding-left: 16px; color: var(--c-on-primary);">
+        <li>Pre/PostToolUse, Stop</li>
+        <li>100% compliance</li>
+        <li>Block + transform actions</li>
       </ul>
     </div>
   </div>
-  <h4 style="margin-top: 32px;">Hooks vs CLAUDE.md</h4>
-  <table style="margin-top: 12px;">
-    <thead><tr><th></th><th>CLAUDE.md</th><th>Hooks</th></tr></thead>
-    <tbody>
-      <tr><td>Compliance</td><td>~80%</td><td>100%</td></tr>
-      <tr><td>Type</td><td>Advisory</td><td>Deterministic</td></tr>
-    </tbody>
-  </table>
-  <p style="margin-top: 16px; font-size: 14px;">Phải chạy MỖI LẦN → Hook. Guidance → CLAUDE.md.</p>
+  <div style="margin-top: 18px; display: grid; grid-template-columns: 2fr 3fr; gap: 18px; align-items: start;">
+    <table style="font-size: 12px;">
+      <thead><tr><th></th><th>CLAUDE.md</th><th>Hooks</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Compliance</strong></td><td>~80%</td><td>100%</td></tr>
+        <tr><td><strong>Type</strong></td><td>Advisory</td><td>Deterministic</td></tr>
+        <tr><td><strong>Trigger</strong></td><td>Claude cân nhắc</td><td>Shell tự chạy</td></tr>
+      </tbody>
+    </table>
+    <div>
+      <p style="font-size: 13px; margin: 0;"><strong>Decision rule:</strong></p>
+      <ul style="margin-top: 4px; font-size: 12px; padding-left: 16px;">
+        <li>Phải chạy <strong>MỖI LẦN</strong> không ngoại lệ → <strong>Hook</strong></li>
+        <li>Guidance Claude cân nhắc → <strong>CLAUDE.md</strong></li>
+        <li>Task-specific procedure → <strong>Skill</strong></li>
+        <li>Heavy work cần context riêng → <strong>Sub-agent</strong></li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 ---
