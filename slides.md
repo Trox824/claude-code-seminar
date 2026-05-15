@@ -75,45 +75,16 @@ mdc: true
 
 <div class="slidev-layout">
     <h2>Agenda</h2>
-  <ol style="font-size: 20px; line-height: 1.8; margin-top: 32px;">
-    <li>Paradigm shift — Chat vs Agent</li>
-    <li>Context là tài nguyên #1</li>
-    <li>Workflow cá nhân: State → Plan → Execute → Test</li>
-    <li>Superpowers skills — toolkit cho cả cycle</li>
-    <li>3 Live Demo xen kẽ</li>
-    <li>5 pillar Claude Code</li>
-    <li>Context mgmt, MCP, Hooks</li>
-    <li>Lỗi hay gặp</li>
-    <li>Q&A</li>
+  <ol style="font-size: 18px; line-height: 1.7; margin-top: 24px;">
+    <li>Context #1 + workflow State → Plan → Execute → Test</li>
+    <li>Superpowers skills toolkit</li>
+    <li>Live Demo: full cycle + Plan + Rewind</li>
+    <li>CLAUDE.md + auto memory · Plan Mode · Rewind · Verification</li>
+    <li>Context mgmt · Dumb Zone · MCP · Skills/Sub-agents/Hooks</li>
+    <li><strong>Advanced:</strong> multi-subagent · beads · /loop · /simplify · design.md · /caveman · cross-agent skills · feature factory</li>
+    <li>Live Demo: debug + E2E</li>
+    <li>Mistakes · security · review · takeaways · Q&A</li>
   </ol>
-</div>
-
----
-
-<!-- SLIDE 4 — PARADIGM SHIFT -->
-
-<div class="slidev-layout">
-    <h2>Paradigm Shift</h2>
-  <table style="margin-top: 24px;">
-    <thead>
-      <tr>
-        <th>Chat (cách cũ)</th>
-        <th>Agent (cách mới)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>Bạn copy code, dán vào chat</td><td>Bạn mô tả mục tiêu</td></tr>
-      <tr><td>Mô tả vấn đề</td><td>Agent tự đọc code</td></tr>
-      <tr><td>AI trả lời</td><td>Agent tự sửa file</td></tr>
-      <tr><td>Copy code, dán vào IDE</td><td>Agent tự chạy test</td></tr>
-      <tr><td>Chạy, báo lỗi</td><td>Agent tự debug</td></tr>
-      <tr><td>Copy lỗi quay lại chat</td><td>Bạn review kết quả</td></tr>
-      <tr><td><strong>Vòng lặp thủ công</strong></td><td><strong>Vòng lặp tự động</strong></td></tr>
-    </tbody>
-  </table>
-  <p style="margin-top: 32px; font-size: 20px; color: var(--c-body-strong);">
-    Bạn chuyển từ <em>người gõ phím</em> → <em>người ra quyết định và review</em>.
-  </p>
 </div>
 
 ---
@@ -141,27 +112,6 @@ mdc: true
     </div>
   </div>
   <p style="margin-top: 32px; color: var(--c-on-dark-soft);">Stripe deploy Claude Code cho <strong>1,370 engineer</strong>. Anthropic nội bộ: đa số code hiện viết bởi Claude Code.</p>
-</div>
-
----
-
-<!-- SLIDE 6 — WHAT IS CLAUDE CODE -->
-
-<div class="slidev-layout">
-    <h2>Claude Code là gì</h2>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 32px;">
-    <div>
-      <p>Coding agent của Anthropic chạy trong terminal hoặc IDE.</p>
-      <ul style="margin-top: 16px;">
-        <li>Đọc toàn bộ codebase, không chỉ một đoạn copy-paste</li>
-        <li>Tự edit file, chạy lệnh, chạy test, fix lỗi</li>
-        <li>Luôn hỏi permission — <strong>bạn vẫn control</strong></li>
-        <li>3 model: Opus 4.7, Sonnet 4.6, Haiku 4.5</li>
-        <li>Surface: Terminal, VS Code, JetBrains, Desktop, Web, Slack</li>
-      </ul>
-    </div>
-    <img src="/img/claude-code-hero.jpg" alt="Claude Code product" style="width: 100%; border-radius: 12px;" />
-  </div>
 </div>
 
 ---
@@ -241,121 +191,95 @@ mdc: true
 
 ---
 
-<!-- SLIDE 9 — STATE PROBLEM -->
+<!-- SLIDE 9 — STATE + PLAN -->
 
 <div class="slidev-layout">
-    <h2>State Problem</h2>
-  <p style="margin-top: 16px;">Định nghĩa vấn đề rõ ràng <strong>trước</strong> khi gõ prompt.</p>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px;">
-    <div class="feature-card" style="border-left: 4px solid var(--c-error);">
-      <div style="font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--c-error); margin-bottom: 8px;">Sai · Mơ hồ</div>
-      <p style="font-family: var(--font-mono); font-size: 14px;">"Fix bug đăng nhập."</p>
+  <h2>State + Plan</h2>
+  <p style="margin-top: 8px; color: var(--c-muted); font-size: 13px;">Bước 1-2 — define vấn đề rồi mới plan, không gõ prompt mơ hồ.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 16px;">
+    <div>
+      <div class="feature-card" style="border-left: 4px solid var(--c-error); padding: 10px 12px;">
+        <div style="font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--c-error);">Sai</div>
+        <p style="font-family: var(--font-mono); font-size: 12px; margin: 4px 0 0;">"Fix bug đăng nhập."</p>
+      </div>
+      <div class="feature-card" style="border-left: 4px solid var(--c-success); margin-top: 8px; padding: 10px 12px;">
+        <div style="font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--c-success);">Đúng · Observed/Expected/Repro/Constraints</div>
+        <p style="font-family: var(--font-mono); font-size: 11px; margin: 4px 0 0;">
+          Click 'Đăng nhập' → 200 nhưng không redirect. Expected: /dashboard. Repro: Chrome, x@y.com.
+        </p>
+      </div>
+      <ul style="margin-top: 10px; font-size: 13px;">
+        <li><strong>Shift+Tab</strong> → Plan Mode trước khi code</li>
+        <li>Atomic steps · review · approve hoặc rewind</li>
+        <li>Plan &gt; 10 phút → quay lại State</li>
+      </ul>
+      <p style="margin-top: 6px; color: var(--c-muted); font-size: 11px;">Skills: <code>brainstorming</code>, <code>using-plan-mode</code>, <code>writing-plans</code>.</p>
     </div>
-    <div class="feature-card" style="border-left: 4px solid var(--c-success);">
-      <div style="font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--c-success); margin-bottom: 8px;">Đúng · State</div>
-      <p style="font-family: var(--font-mono); font-size: 13px;">
-        User click 'Đăng nhập', form submit, response 200, redirect không xảy ra.
-        <br/>Expected: redirect /dashboard.
-        <br/>Repro: Chrome, account x@y.com.
-      </p>
-    </div>
-  </div>
-  <p style="margin-top: 32px;"><strong>Components:</strong> Observed · Expected · Repro · Constraints.</p>
-  <p style="margin-top: 8px; color: var(--c-muted); font-size: 14px;">
-    Superpowers skill: <code>brainstorming</code> chạy trước khi state nếu chưa rõ.
-  </p>
-</div>
-
----
-
-<!-- SLIDE 10 — PLAN -->
-
-<div class="slidev-layout">
-    <h2>Plan</h2>
-  <p style="margin-top: 16px;">Bao giờ cũng plan trước, code sau.</p>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 32px;">
-    <ul>
-      <li><strong>Shift+Tab</strong> → Plan Mode</li>
-      <li>Agent đề xuất plan có check-list từng bước</li>
-      <li>Bạn review → approve hoặc rewind</li>
-      <li>Atomic steps = dễ verify từng cái</li>
-      <li>Sai plan = rewrite, không patch</li>
-      <li>Plan > 10 phút = quay về Bước 1</li>
-    </ul>
-    <div style="background: #181715; color: #f0eee6; border-radius: 12px; padding: 18px 20px; font-family: var(--font-mono); font-size: 12px; line-height: 1.55; align-self: center;">
-      <div style="display: flex; gap: 6px; margin-bottom: 10px;">
+    <div style="background: #181715; color: #f0eee6; border-radius: 12px; padding: 14px 16px; font-family: var(--font-mono); font-size: 11px; line-height: 1.5; align-self: center;">
+      <div style="display: flex; gap: 6px; margin-bottom: 8px;">
         <span style="background: #cc785c; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;">⏸ PLAN MODE</span>
-        <span style="opacity: 0.5; font-size: 10px;">Shift+Tab to toggle</span>
+        <span style="opacity: 0.5; font-size: 10px;">Shift+Tab</span>
       </div>
-      <div style="color: #cc785c;">&gt; Refactor auth middleware to support OAuth</div>
-      <div style="margin-top: 10px; opacity: 0.85;">I'll proceed in 5 atomic steps:</div>
-      <div style="margin-top: 8px;">
-        <div>☐ 1. Extract <span style="color: #f0c674;">verifyToken()</span> into separate module</div>
-        <div>☐ 2. Add <span style="color: #f0c674;">OAuthStrategy</span> interface</div>
-        <div>☐ 3. Implement Google + GitHub providers</div>
-        <div>☐ 4. Wire into existing <span style="color: #f0c674;">/login</span> route</div>
-        <div>☐ 5. Add integration tests</div>
+      <div style="color: #cc785c;">&gt; Refactor auth → OAuth</div>
+      <div style="margin-top: 8px; opacity: 0.85;">5 atomic steps:</div>
+      <div style="margin-top: 4px;">
+        <div>☐ Extract <span style="color: #f0c674;">verifyToken()</span></div>
+        <div>☐ Add <span style="color: #f0c674;">OAuthStrategy</span></div>
+        <div>☐ Google + GitHub providers</div>
+        <div>☐ Wire <span style="color: #f0c674;">/login</span> route</div>
+        <div>☐ Integration tests</div>
       </div>
-      <div style="margin-top: 14px; opacity: 0.7; font-size: 11px;">Press <span style="background: #3a3833; padding: 1px 5px; border-radius: 3px;">Enter</span> approve · <span style="background: #3a3833; padding: 1px 5px; border-radius: 3px;">Esc</span> rewind</div>
+      <div style="margin-top: 10px; opacity: 0.7; font-size: 10px;"><span style="background: #3a3833; padding: 1px 5px; border-radius: 3px;">Enter</span> approve · <span style="background: #3a3833; padding: 1px 5px; border-radius: 3px;">Esc</span> rewind</div>
     </div>
   </div>
-  <p style="margin-top: 24px; color: var(--c-muted); font-size: 14px;">
-    Superpowers: <code>using-plan-mode</code>, <code>subagent-driven-development</code> cho task lớn.
-  </p>
 </div>
 
 ---
 
-<!-- SLIDE 11 — EXECUTE -->
+<!-- SLIDE 10 — EXECUTE + TEST -->
 
 <div class="slidev-layout dark">
-    <h2 style="color: var(--c-on-dark);">Execute</h2>
-  <div style="display: grid; grid-template-columns: 3fr 2fr; gap: 32px; margin-top: 24px;">
+  <h2 style="color: var(--c-on-dark);">Execute + Test</h2>
+  <p style="margin-top: 8px; color: var(--c-on-dark-soft); font-size: 13px;">Bước 3-4 — atomic commits + 3 tầng test, agent báo "done" ≠ thực sự done.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 16px;">
     <div>
-      <p style="color: var(--c-on-dark-soft);">Thực thi theo plan, mỗi step một thay đổi atomic.</p>
-      <ul style="margin-top: 16px; color: var(--c-on-dark-soft); font-size: 15px;">
-        <li><strong style="color: var(--c-on-dark);">Git commit từng atomic step</strong> — checkpoint để rewind</li>
-        <li><strong style="color: var(--c-on-dark);">TDD style</strong>: test trước, code sau</li>
-        <li><strong style="color: var(--c-on-dark);">@-mention file</strong> thay vì bắt agent tìm</li>
-        <li><strong style="color: var(--c-on-dark);">Permission từng bước</strong> — không full auto trên prod</li>
-        <li>Agent stuck → bảo in giả thuyết + cách verify</li>
+      <h4 style="color: var(--c-on-dark); margin: 0;">Execute</h4>
+      <ul style="margin-top: 8px; color: var(--c-on-dark-soft); font-size: 13px;">
+        <li>Git commit từng atomic step — checkpoint rewind</li>
+        <li>TDD: test trước, code sau</li>
+        <li>@-mention file thay vì bắt agent tìm</li>
+        <li>Permission từng bước trên prod</li>
+        <li>Stuck → bảo agent in giả thuyết + cách verify</li>
       </ul>
-      <div style="margin-top: 20px; background: var(--c-primary); color: var(--c-on-primary); padding: 16px; border-radius: var(--r-lg); font-size: 14px;">
-        <strong>Rewind > correct:</strong> Sai 2 lần → <code style="background: rgba(0,0,0,0.2);">/rewind</code> về Plan.
+      <div style="margin-top: 12px; background: var(--c-primary); color: var(--c-on-primary); padding: 10px 12px; border-radius: var(--r-sm); font-size: 12px;">
+        <strong>Rewind &gt; correct.</strong> Sai 2 lần → <code style="background: rgba(0,0,0,0.2);">/rewind</code> về Plan.
       </div>
     </div>
-    <img src="/img/claude-code-vscode.webp" alt="Claude Code VS Code" style="width: 100%; border-radius: 12px; object-fit: cover;" />
-  </div>
-</div>
-
----
-
-<!-- SLIDE 12 — TEST E2E -->
-
-<div class="slidev-layout">
-    <h2>Test (E2E)</h2>
-  <p style="margin-top: 16px;">Không có e2e test = chưa xong, không phụ thuộc agent báo "done".</p>
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px;">
-    <div class="feature-card">
-      <div style="font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--c-primary); margin-bottom: 8px;">Tầng 1</div>
-      <h4 style="margin: 0;">Unit</h4>
-      <p style="margin-top: 8px; font-size: 14px;">Agent chạy sau mỗi edit.</p>
-    </div>
-    <div class="feature-card">
-      <div style="font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--c-primary); margin-bottom: 8px;">Tầng 2</div>
-      <h4 style="margin: 0;">Integration</h4>
-      <p style="margin-top: 8px; font-size: 14px;">Giao thoa nhiều module.</p>
-    </div>
-    <div class="feature-card" style="background-color: var(--c-primary); color: var(--c-on-primary);">
-      <div style="font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--c-on-primary); margin-bottom: 8px;">Tầng 3</div>
-      <h4 style="margin: 0; color: var(--c-on-primary);">E2E</h4>
-      <p style="margin-top: 8px; font-size: 14px; color: var(--c-on-primary);">Playwright · Claude in Chrome · Preview MCP.</p>
+    <div>
+      <h4 style="color: var(--c-on-dark); margin: 0;">Test (3 tầng)</h4>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 8px;">
+        <div style="background: var(--c-surface-dark-elevated); color: var(--c-on-dark); padding: 8px; border-radius: 6px;">
+          <div style="font-size: 10px; color: var(--c-primary); letter-spacing: 1px;">T1</div>
+          <strong style="font-size: 13px;">Unit</strong>
+          <p style="font-size: 11px; margin: 2px 0 0; color: var(--c-on-dark-soft);">Sau mỗi edit</p>
+        </div>
+        <div style="background: var(--c-surface-dark-elevated); color: var(--c-on-dark); padding: 8px; border-radius: 6px;">
+          <div style="font-size: 10px; color: var(--c-primary); letter-spacing: 1px;">T2</div>
+          <strong style="font-size: 13px;">Integration</strong>
+          <p style="font-size: 11px; margin: 2px 0 0; color: var(--c-on-dark-soft);">Multi-module</p>
+        </div>
+        <div style="background: var(--c-primary); color: var(--c-on-primary); padding: 8px; border-radius: 6px;">
+          <div style="font-size: 10px; letter-spacing: 1px;">T3</div>
+          <strong style="font-size: 13px;">E2E</strong>
+          <p style="font-size: 11px; margin: 2px 0 0;">Playwright · Chrome MCP</p>
+        </div>
+      </div>
+      <p style="margin-top: 10px; color: var(--c-on-dark-soft); font-size: 12px;">
+        E2E flow: server local (bg) → sub-agent điều khiển browser → click→response→DOM → PASS/FAIL + screenshot.
+      </p>
+      <p style="margin-top: 6px; color: var(--c-muted-soft); font-size: 11px;">Skills: <code>test-driven-development</code> · <code>e2e-playwright-fix-loop</code> · <code>verification-before-completion</code>.</p>
     </div>
   </div>
-  <p style="margin-top: 32px;"><strong>E2E flow của tôi:</strong> server local (bg) → sub-agent điều khiển browser → verify click→response→DOM → return PASS/FAIL + screenshot.</p>
-  <p style="margin-top: 8px; color: var(--c-muted); font-size: 14px;">
-    Superpowers: <code>e2e-testing</code>, <code>using-playwright</code>, <code>defensive-programming</code>.
-  </p>
 </div>
 
 ---
@@ -380,44 +304,13 @@ mdc: true
 
 ---
 
-<!-- SLIDE 14 — DEMO 1 -->
+<!-- SLIDE 14 — DEMO 1 (merged) -->
 
 <div class="slidev-layout coral" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
   <span class="badge-coral" style="background: var(--c-on-primary); color: var(--c-primary);">Live Demo</span>
   <h1 style="margin-top: 24px; color: var(--c-on-primary);">Demo 1</h1>
-  <h3 style="color: var(--c-on-primary); font-size: 28px; margin-top: 16px;">Full cycle: State → Plan → Execute → Test</h3>
-  <p style="margin-top: 32px; color: var(--c-on-primary); font-size: 18px;">~10-12 phút</p>
-</div>
-
----
-
-<!-- SLIDE 15 — PILLAR 1: CLAUDE.md -->
-
-<div class="slidev-layout">
-    <h2>CLAUDE.md</h2>
-  <p style="margin-top: 16px;">File markdown ở root project, Claude tự đọc mỗi session.</p>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 32px;">
-    <div>
-      <h4>Chứa</h4>
-      <ul style="margin-top: 8px;">
-        <li>Architecture overview</li>
-        <li>Coding conventions</li>
-        <li>Commands hay dùng</li>
-        <li>Gotchas</li>
-      </ul>
-      <h4 style="margin-top: 24px;">Best practices (Anthropic)</h4>
-      <ul style="margin-top: 8px;">
-        <li>Target <strong>&lt; 200 dòng</strong> / file</li>
-        <li>Specific &gt; vague: <em>"2-space indent"</em>, không <em>"format nicely"</em></li>
-        <li>4 scope: managed · user · project · local</li>
-        <li><code>/init</code> generate · <code>/memory</code> audit</li>
-      </ul>
-    </div>
-    <div class="code-window">
-      <div style="color: var(--c-muted-soft); font-size: 12px; margin-bottom: 12px;">CLAUDE.md</div>
-      <div v-pre style="font-family: var(--font-mono); font-size: 12px; line-height: 1.7; color: var(--c-on-dark);"><span style="color: var(--c-muted-soft);">&#35; Project Architecture</span><br/><br/><span style="color: var(--c-muted-soft);">&#35;&#35; Conventions</span><br/>- TypeScript strict mode<br/>- Prettier · ESLint<br/>- Conventional commits<br/><br/><span style="color: var(--c-muted-soft);">&#35;&#35; Commands</span><br/>- pnpm dev<br/>- pnpm test<br/>- pnpm lint<br/><br/><span style="color: var(--c-muted-soft);">&#35;&#35; Gotchas</span><br/>- Migration order matters<br/>- Use timezone-aware dates</div>
-    </div>
-  </div>
+  <h3 style="color: var(--c-on-primary); font-size: 28px; margin-top: 16px;">Full cycle + Plan + Rewind</h3>
+  <p style="margin-top: 32px; color: var(--c-on-primary); font-size: 18px;">~12-15 phút</p>
 </div>
 
 ---
@@ -522,34 +415,6 @@ mdc: true
 
 ---
 
-<!-- SLIDE 19 — PILLAR 3: PERMISSIONS -->
-
-<div class="slidev-layout">
-    <h2>Permissions</h2>
-  <p style="margin-top: 16px;">Bạn vẫn là người ra quyết định.</p>
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px;">
-    <div class="feature-card">
-      <h4>Hỏi mỗi lần</h4>
-      <p style="margin-top: 8px; font-size: 14px;">An toàn nhất. Default.</p>
-    </div>
-    <div class="feature-card">
-      <h4>Allow safe</h4>
-      <p style="margin-top: 8px; font-size: 14px;">Whitelist command hay dùng.</p>
-    </div>
-    <div class="feature-card" style="background: var(--c-error); color: var(--c-on-primary);">
-      <h4 style="color: var(--c-on-primary);">Full auto</h4>
-      <p style="margin-top: 8px; font-size: 14px; color: var(--c-on-primary);">Chỉ sandbox / worktree.</p>
-    </div>
-  </div>
-  <ul style="margin-top: 32px;">
-    <li>Cảnh báo khi agent muốn <code>rm -rf</code></li>
-    <li><code>--dangerously-skip-permissions</code> tồn tại — chỉ khi hiểu rõ rủi ro</li>
-    <li>Triết lý: <strong>Trust but verify</strong></li>
-  </ul>
-</div>
-
----
-
 <!-- SLIDE 20 — PILLAR 4: VERIFICATION LOOPS -->
 
 <div class="slidev-layout coral">
@@ -569,38 +434,6 @@ mdc: true
   <p style="margin-top: 16px; color: var(--c-on-primary); font-style: italic;">
     Không có verification loop = bạn là feedback loop duy nhất.
   </p>
-</div>
-
----
-
-<!-- SLIDE 21 — PILLAR 5: SLASH COMMANDS -->
-
-<div class="slidev-layout">
-    <h2>Slash Commands</h2>
-  <table style="margin-top: 32px; font-family: var(--font-mono);">
-    <tbody>
-      <tr><td><code>/init</code></td><td>Generate CLAUDE.md</td></tr>
-      <tr><td><code>/clear</code></td><td>Reset context</td></tr>
-      <tr><td><code>/compact</code></td><td>Nén lịch sử</td></tr>
-      <tr><td><code>/context</code></td><td>Xem breakdown token</td></tr>
-      <tr><td><code>/rewind</code> (2x Esc)</td><td>Quay lại state cũ</td></tr>
-      <tr><td><code>/model sonnet|opus</code></td><td>Switch model</td></tr>
-      <tr><td><code>/mcp</code></td><td>Quản lý MCP servers</td></tr>
-      <tr><td><code>/skills</code></td><td>Quản lý skills</td></tr>
-      <tr><td><code>/cost</code></td><td>Chi phí session</td></tr>
-    </tbody>
-  </table>
-</div>
-
----
-
-<!-- SLIDE 22 — DEMO 2 -->
-
-<div class="slidev-layout coral" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-  <span class="badge-coral" style="background: var(--c-on-primary); color: var(--c-primary);">Live Demo</span>
-  <h1 style="margin-top: 24px; color: var(--c-on-primary);">Demo 2</h1>
-  <h3 style="color: var(--c-on-primary); font-size: 28px; margin-top: 16px;">Plan + Rewind</h3>
-  <p style="margin-top: 32px; color: var(--c-on-primary); font-size: 18px;">~7-10 phút</p>
 </div>
 
 ---
@@ -722,6 +555,317 @@ mdc: true
 
 ---
 
+<!-- SLIDE A1 — MULTI-SUBAGENT ORCHESTRATION -->
+
+<div class="slidev-layout">
+  <h2>Multi-Subagent Orchestration</h2>
+  <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">Vượt qua spawn 1 agent — fan-out song song cho task lớn.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px;">
+    <div>
+      <h4 style="margin: 0; font-size: 14px;">Khi nào fan-out</h4>
+      <ul style="margin-top: 6px; font-size: 12px;">
+        <li>≥ 2 task <strong>độc lập</strong> không share state</li>
+        <li>Search/research nhiều ngách codebase</li>
+        <li>Review nhiều khía cạnh (security · perf · style)</li>
+        <li>Refactor nhiều module không phụ thuộc</li>
+      </ul>
+      <h4 style="margin: 12px 0 0; font-size: 14px;">Pattern thực chiến</h4>
+      <table style="font-size: 11px; margin-top: 4px;">
+        <tbody>
+          <tr><td><code>code-explorer</code></td><td>Map architecture</td></tr>
+          <tr><td><code>code-architect</code></td><td>Design blueprint</td></tr>
+          <tr><td><code>code-reviewer</code></td><td>Audit diff</td></tr>
+          <tr><td><code>Explore</code></td><td>Quick file lookup</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div style="background: #181715; color: #f0eee6; border-radius: 12px; padding: 12px 14px; font-family: var(--font-mono); font-size: 11px; line-height: 1.5;">
+        <div style="color: #cc785c;">// 1 message, 3 tool calls song song</div>
+        <div style="margin-top: 6px;">Agent(explorer, "map auth layer")</div>
+        <div>Agent(explorer, "map billing layer")</div>
+        <div>Agent(explorer, "map notif layer")</div>
+        <div style="margin-top: 8px; color: #cc785c;">→ 3 isolated context, return tóm tắt</div>
+        <div style="margin-top: 8px; opacity: 0.7;">isolation: <span style="color: #f0c674;">"worktree"</span> → git worktree riêng</div>
+      </div>
+      <ul style="margin-top: 10px; font-size: 12px;">
+        <li>Mỗi agent context riêng — không pollute main</li>
+        <li>Chỉ return kết quả cuối — search 200 token vs grep 40K</li>
+        <li>Worktree isolation cho code-writing agent</li>
+      </ul>
+      <p style="margin-top: 6px; color: var(--c-muted); font-size: 11px;">Skills: <code>dispatching-parallel-agents</code> · <code>subagent-driven-development</code> · <code>multi-agent-orchestration</code>.</p>
+    </div>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE A2 — BEADS LOCAL KANBAN -->
+
+<div class="slidev-layout">
+  <h2>beads — Local Kanban cho Agent</h2>
+  <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">Memory upgrade cho coding agent — graph issue tracker chạy local, git-friendly.</p>
+  <div style="display: grid; grid-template-columns: 3fr 2fr; gap: 14px; margin-top: 12px;">
+    <div>
+      <table style="font-family: var(--font-mono); font-size: 12px;">
+        <tbody>
+          <tr><td><code>bd init</code></td><td>Tạo store + AGENTS.md</td></tr>
+          <tr><td><code>bd create "..." -p 0</code></td><td>Task priority 0</td></tr>
+          <tr><td><code>bd ready</code></td><td>Task không bị block</td></tr>
+          <tr><td><code>bd update &lt;id&gt; --claim</code></td><td>Agent claim atomic</td></tr>
+          <tr><td><code>bd show &lt;id&gt;</code></td><td>Detail + audit trail</td></tr>
+          <tr><td><code>bd close &lt;id&gt; "msg"</code></td><td>Hoàn thành</td></tr>
+          <tr><td><code>bd remember "..."</code></td><td>Lưu insight, bd prime inject</td></tr>
+          <tr><td><code>bd ... --json</code></td><td>Parse cho agent</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top: 8px; font-size: 12px;">
+        Dependency graph: <code>relates_to</code> · <code>duplicates</code> · <code>supersedes</code> · <code>replies_to</code>. Hash ID <code>bd-a1b2</code> tránh merge conflict.
+      </p>
+    </div>
+    <div>
+      <div class="feature-card" style="padding: 10px 12px;">
+        <h4 style="margin: 0; font-size: 13px;">Vs TodoWrite / Linear</h4>
+        <table style="font-size: 11px; margin-top: 4px;">
+          <tbody>
+            <tr><td>TodoWrite</td><td>Session-scoped</td></tr>
+            <tr><td>beads</td><td>Repo-scoped, git diff</td></tr>
+            <tr><td>Linear/Jira</td><td>Team-scoped, cloud</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top: 8px; background: var(--c-primary); color: var(--c-on-primary); padding: 10px 12px; border-radius: var(--r-sm); font-size: 12px;">
+        <strong>Use case:</strong> Human file 20 issue → agent <code>bd ready</code> pick task → close khi PR merge. Long-horizon work không mất context.
+      </div>
+      <p style="margin-top: 6px; color: var(--c-muted); font-size: 11px;">Install: <code>curl -fsSL .../install.sh | bash</code> · github.com/steveyegge/beads</p>
+    </div>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE A3 — /loop + /simplify -->
+
+<div class="slidev-layout">
+  <h2>/loop · /simplify</h2>
+  <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">2 slash command bị bỏ quên — autonomy + code quality.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px;">
+    <div class="feature-card" style="padding: 12px;">
+      <h4 style="margin: 0;">/loop</h4>
+      <p style="margin: 4px 0 0; font-size: 12px; color: var(--c-muted);">Chạy prompt theo interval, hoặc để model tự pace.</p>
+      <div style="margin-top: 8px; background: #181715; color: #f0eee6; border-radius: 8px; padding: 10px 12px; font-family: var(--font-mono); font-size: 11px; line-height: 1.5;">
+        <div style="color: #cc785c;"># Fixed interval</div>
+        <div>/loop 5m /check-deploy</div>
+        <div style="margin-top: 6px; color: #cc785c;"># Dynamic — model tự chọn delay</div>
+        <div>/loop poll PR cho đến khi merge</div>
+        <div style="margin-top: 6px; color: #cc785c;"># Autonomous loop</div>
+        <div>/loop /babysit-prs</div>
+      </div>
+      <ul style="margin-top: 8px; font-size: 12px;">
+        <li>Poll deploy / CI / PR</li>
+        <li>Cron-style scheduled work</li>
+        <li>Pair với hook để full autonomy</li>
+      </ul>
+    </div>
+    <div class="feature-card" style="padding: 12px; background: var(--c-primary); color: var(--c-on-primary);">
+      <h4 style="margin: 0; color: var(--c-on-primary);">/simplify</h4>
+      <p style="margin: 4px 0 0; font-size: 12px; opacity: 0.85;">Review changed code → reuse, quality, efficiency → fix.</p>
+      <ul style="margin-top: 8px; font-size: 12px;">
+        <li>Phát hiện duplicate logic, abstraction thiếu</li>
+        <li>Bắt over-engineering / dead code</li>
+        <li>Auto-fix issue tìm được</li>
+        <li>Chạy <strong>trước commit</strong> hoặc trước PR</li>
+      </ul>
+      <div style="margin-top: 10px; background: rgba(0,0,0,0.2); padding: 8px 10px; border-radius: 6px; font-family: var(--font-mono); font-size: 11px;">
+        $ /simplify<br/>→ scan diff → report → apply fix
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE A4 — DESIGN.md / Warp -->
+
+<div class="slidev-layout">
+  <h2>design.md — CLAUDE.md cho UI</h2>
+  <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">Google DESIGN.md spec — agent đọc trước khi viết frontend.</p>
+  <div style="display: grid; grid-template-columns: 3fr 2fr; gap: 14px; margin-top: 12px;">
+    <div>
+      <ul style="font-size: 13px;">
+        <li><strong>Vấn đề:</strong> agent sinh UI "AI generic" — Tailwind gradient, blue-500, rounded card</li>
+        <li><strong>Giải pháp:</strong> design.md = tokens · components · voice · do/don't, cụ thể cho brand</li>
+        <li><strong>Setup:</strong> <code>npx getdesign@latest add warp</code></li>
+        <li><strong>Catalog:</strong> 71 systems — Vercel, Stripe, Figma, Notion, Linear, Apple, Spotify, Airbnb</li>
+        <li><strong>Use:</strong> "Use design.md/warp khi viết landing page" — agent reference tokens chính xác</li>
+      </ul>
+      <p style="margin-top: 10px; font-size: 12px;">
+        <strong>Warp example:</strong> dark IDE-like block UI · terminal · developer tools. Skill <code>frontend-design</code> pair sẵn.
+      </p>
+    </div>
+    <div class="code-window" style="padding: 12px 14px;">
+      <div style="color: var(--c-muted-soft); font-size: 11px; margin-bottom: 8px;">design.md (snippet)</div>
+      <div v-pre style="font-family: var(--font-mono); font-size: 11px; line-height: 1.5; color: var(--c-on-dark);"><span style="color: var(--c-muted-soft);">## Tokens</span><br/>bg: #1a1b1e<br/>accent: #af5fff<br/>radius-sm: 4px<br/><br/><span style="color: var(--c-muted-soft);">## Voice</span><br/>- Terse, technical<br/>- No marketing fluff<br/><br/><span style="color: var(--c-muted-soft);">## Don't</span><br/>- gradient backgrounds<br/>- generic SaaS hero</div>
+    </div>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE A5 — /caveman SKILL -->
+
+<div class="slidev-layout">
+  <h2>/caveman — Compress Token Mode</h2>
+  <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">Drop article/filler ~75% token cut · technical accuracy giữ nguyên.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px;">
+    <div>
+      <table style="font-size: 12px;">
+        <thead><tr><th>Level</th><th>Cắt gì</th></tr></thead>
+        <tbody>
+          <tr><td><code>lite</code></td><td>Filler thôi</td></tr>
+          <tr><td><code>full</code> (default)</td><td>Article + fragment OK</td></tr>
+          <tr><td><code>ultra</code></td><td>Tối đa, telegram style</td></tr>
+        </tbody>
+      </table>
+      <ul style="margin-top: 10px; font-size: 12px;">
+        <li><strong>Giữ nguyên:</strong> code block · commit message · security warning · error message</li>
+        <li><strong>Auto-clarity:</strong> destructive op, multi-step → revert normal</li>
+        <li>Toggle: <code>/caveman lite|full|ultra</code> · <code>stop caveman</code></li>
+        <li>Pair với <strong>Dumb Zone</strong> — context tight = caveman ON</li>
+      </ul>
+    </div>
+    <div>
+      <div class="feature-card" style="padding: 10px 12px;">
+        <h4 style="margin: 0; font-size: 13px;">Before · After</h4>
+        <div style="margin-top: 8px; padding: 8px; background: #fdf3ee; border-radius: 6px; font-size: 11px; line-height: 1.5;">
+          <strong style="color: var(--c-error);">Normal:</strong> "Sure! I'd be happy to help. The bug you're seeing is likely caused by..."
+        </div>
+        <div style="margin-top: 6px; padding: 8px; background: #181715; color: #f0eee6; border-radius: 6px; font-size: 11px; line-height: 1.5;">
+          <strong style="color: #cc785c;">Caveman:</strong> "Bug in auth middleware. Token check use <code style="color: #f0c674;">&lt;</code> not <code style="color: #f0c674;">&lt;=</code>. Fix:"
+        </div>
+      </div>
+      <p style="margin-top: 8px; font-size: 12px;">
+        Cũng có <code>/caveman-commit</code> và <code>/caveman-review</code> — commit message và PR review siêu nén.
+      </p>
+      <p style="margin-top: 4px; color: var(--c-muted); font-size: 11px;">Plugin: caveman (skill marketplace).</p>
+    </div>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE A6 — skills.sh + find-skills -->
+
+<div class="slidev-layout">
+  <h2>Skill Discovery</h2>
+  <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">Tìm skill phù hợp — đừng tự viết lại nếu có sẵn.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px;">
+    <div class="feature-card" style="padding: 12px;">
+      <h4 style="margin: 0; font-size: 14px;"><code>find-skills</code> skill</h4>
+      <p style="margin: 4px 0 0; font-size: 12px; color: var(--c-muted);">Built-in discovery — hỏi "có skill nào làm X?" → trả về match.</p>
+      <ul style="margin-top: 8px; font-size: 12px;">
+        <li>Trigger: "how do I do X", "find skill for X"</li>
+        <li>Browse namespace: <code>superpowers:*</code>, <code>anthropic-skills:*</code>, <code>frontend-design:*</code>, <code>caveman:*</code></li>
+        <li>Install on-demand</li>
+      </ul>
+    </div>
+    <div class="feature-card" style="padding: 12px;">
+      <h4 style="margin: 0; font-size: 14px;"><code>skills.sh</code> script</h4>
+      <p style="margin: 4px 0 0; font-size: 12px; color: var(--c-muted);">Shell helper — list local skill, grep description, install.</p>
+      <div style="margin-top: 8px; background: #181715; color: #f0eee6; border-radius: 8px; padding: 10px 12px; font-family: var(--font-mono); font-size: 11px; line-height: 1.5;">
+        <div>$ ls ~/.claude/skills/</div>
+        <div style="color: #b8b3a0; margin-top: 4px;">brainstorming/ test-driven-development/ ...</div>
+        <div style="margin-top: 6px;">$ skills.sh search "playwright"</div>
+        <div style="color: #b8b3a0; margin-top: 4px;">→ playwright-cli, e2e-playwright-fix-loop</div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 12px; background: var(--c-primary); color: var(--c-on-primary); padding: 10px 14px; border-radius: var(--r-sm); font-size: 12px;">
+    <strong>Rule:</strong> Task lặp lại lần 2 → tìm skill. Không có → viết với <code>skill-creator</code>. 1 skill = 1 mục đích.
+  </div>
+</div>
+
+---
+
+<!-- SLIDE A7 — CROSS-AGENT SKILL SETUP -->
+
+<div class="slidev-layout">
+  <h2>1 Skill — Nhiều Coding Agent</h2>
+  <p style="margin-top: 4px; color: var(--c-muted); font-size: 12px;">Skill dùng được trên Claude Code, Copilot CLI, Gemini CLI, Codex — không lock-in.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px;">
+    <div>
+      <h4 style="margin: 0; font-size: 14px;">Priority chain</h4>
+      <table style="font-size: 12px; margin-top: 6px;">
+        <thead><tr><th>Priority</th><th>File</th><th>Agent</th></tr></thead>
+        <tbody>
+          <tr><td>1 (cao nhất)</td><td><code>CLAUDE.md</code></td><td>Claude Code</td></tr>
+          <tr><td>1</td><td><code>AGENTS.md</code></td><td>Universal (Codex/Copilot)</td></tr>
+          <tr><td>1</td><td><code>GEMINI.md</code></td><td>Gemini CLI</td></tr>
+          <tr><td>2</td><td>Skill</td><td>Override default</td></tr>
+          <tr><td>3</td><td>System prompt</td><td>Default</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top: 8px; font-size: 12px;">
+        User instruction <strong>luôn thắng</strong> — skill conflict → CLAUDE.md/AGENTS.md win.
+      </p>
+    </div>
+    <div>
+      <h4 style="margin: 0; font-size: 14px;">Cross-platform skill</h4>
+      <ul style="margin-top: 6px; font-size: 12px;">
+        <li>Skill viết với CC tool name (Read/Edit/Bash...)</li>
+        <li>Copilot CLI: dùng <code>references/copilot-tools.md</code> map</li>
+        <li>Codex: <code>references/codex-tools.md</code></li>
+        <li>Gemini: auto-load via GEMINI.md</li>
+        <li>Shared <code>~/.claude/skills/</code> → dùng chéo nếu folder cùng path</li>
+      </ul>
+      <div style="margin-top: 10px; background: var(--c-primary); color: var(--c-on-primary); padding: 10px 12px; border-radius: var(--r-sm); font-size: 12px;">
+        <strong>Setup team:</strong> commit <code>CLAUDE.md</code> + <code>AGENTS.md</code> + <code>.claude/skills/</code> vào repo → mọi engineer cùng workflow.
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+<!-- SLIDE A8 — AUTONOMOUS FEATURE FACTORY -->
+
+<div class="slidev-layout dark">
+  <h2 style="color: var(--c-on-dark);">Autonomous Feature Factory</h2>
+  <p style="margin-top: 4px; color: var(--c-muted-soft); font-size: 12px;">Tie A1-A7: long-horizon work với minimal human-in-loop.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px;">
+    <div>
+      <ol style="color: var(--c-on-dark-soft); font-size: 13px;">
+        <li><strong style="color: var(--c-on-dark);">Spec</strong> — design.md (UI) + CLAUDE.md (architecture)</li>
+        <li><strong style="color: var(--c-on-dark);">Queue</strong> — <code>bd create</code> 10 issue, dependency graph</li>
+        <li><strong style="color: var(--c-on-dark);">Dispatch</strong> — main agent <code>bd ready</code> → spawn 3 sub-agent song song (worktree isolated)</li>
+        <li><strong style="color: var(--c-on-dark);">Verify</strong> — mỗi sub-agent chạy <code>/simplify</code> + e2e test trước khi close</li>
+        <li><strong style="color: var(--c-on-dark);">Loop</strong> — <code>/loop</code> poll queue đến khi empty</li>
+        <li><strong style="color: var(--c-on-dark);">Compress</strong> — <code>/caveman</code> mọi message intermediate</li>
+        <li><strong style="color: var(--c-on-dark);">Review</strong> — human review PR cuối, không từng commit</li>
+      </ol>
+    </div>
+    <div>
+      <div style="background: var(--c-surface-dark-elevated); padding: 14px 16px; border-radius: 12px; font-family: var(--font-mono); font-size: 11px; line-height: 1.55; color: var(--c-on-dark);">
+        <div style="color: #cc785c;">// main agent loop</div>
+        <div>while bd ready --json | jq '.[]'; do</div>
+        <div style="padding-left: 12px;">id = $(bd ready --json | head 1)</div>
+        <div style="padding-left: 12px;">Agent({</div>
+        <div style="padding-left: 24px;">subagent: "feature-dev",</div>
+        <div style="padding-left: 24px;">isolation: "worktree",</div>
+        <div style="padding-left: 24px;">prompt: $(bd show $id)</div>
+        <div style="padding-left: 12px;">})</div>
+        <div style="padding-left: 12px;">bd close $id "PR #..."</div>
+        <div>done</div>
+      </div>
+      <div style="margin-top: 12px; background: var(--c-primary); color: var(--c-on-primary); padding: 10px 12px; border-radius: var(--r-sm); font-size: 12px;">
+        <strong>Caveat:</strong> chỉ chạy với spec rõ + verification loop chắc + worktree isolation. Skip 1 cái = horror story.
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
 <!-- SLIDE 26 — DEMO 3 -->
 
 <div class="slidev-layout coral" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
@@ -757,12 +901,14 @@ mdc: true
     <h2 style="color: var(--c-on-dark);">Security + Verification</h2>
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px;">
     <div>
-      <h4 style="color: var(--c-error);">Security</h4>
-      <ul style="color: var(--c-on-dark-soft); font-size: 15px; margin-top: 8px;">
-        <li><code>--dangerously-skip-permissions</code> trên prod</li>
+      <h4 style="color: var(--c-error);">Security · Permissions</h4>
+      <ul style="color: var(--c-on-dark-soft); font-size: 14px; margin-top: 8px;">
+        <li>3 mode: <strong>ask</strong> (default) · <strong>allow safe</strong> (whitelist) · <strong>full auto</strong> (sandbox/worktree thôi)</li>
+        <li><code>--dangerously-skip-permissions</code> trên prod = horror story</li>
         <li>API token commit vào MCP config</li>
         <li>Token overprivileged ("chỉ để test")</li>
-        <li>No approval gate trước irreversible command</li>
+        <li>No approval gate trước irreversible command (<code>rm -rf</code>, DB drop)</li>
+        <li>Triết lý: <strong>Trust but verify</strong></li>
       </ul>
     </div>
     <div>
