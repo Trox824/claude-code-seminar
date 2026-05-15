@@ -378,37 +378,39 @@ mdc: true
 
 <div class="slidev-layout">
     <h2>CLAUDE.md + Auto Memory</h2>
-  <p style="margin-top: 12px; color: var(--c-muted); font-size: 14px;">2 hệ bộ nhớ load mỗi session — official Anthropic docs.</p>
-  <table style="margin-top: 20px;">
-    <thead>
-      <tr><th></th><th>CLAUDE.md</th><th>Auto memory</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><strong>Ai viết</strong></td><td>Bạn</td><td>Claude</td></tr>
-      <tr><td><strong>Nội dung</strong></td><td>Instructions + rules</td><td>Learnings + patterns</td></tr>
-      <tr><td><strong>Scope</strong></td><td>Project · user · org</td><td>Per repo (shared worktrees)</td></tr>
-      <tr><td><strong>Load</strong></td><td>Full mỗi session</td><td>First 200 lines / 25KB</td></tr>
-      <tr><td><strong>Dùng cho</strong></td><td>Coding standards, workflow, architecture</td><td>Build commands, debug insights, preferences</td></tr>
-    </tbody>
-  </table>
-  <div style="margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-    <div class="feature-card" style="padding: 14px;">
-      <h4 style="font-size: 14px;">Khi nào add vào CLAUDE.md</h4>
-      <ul style="margin-top: 6px; font-size: 13px;">
-        <li>Claude sai cùng lỗi lần 2</li>
-        <li>Code review bắt thứ Claude phải biết</li>
-        <li>Gõ lại cùng correction</li>
-        <li>Onboard teammate mới cần cùng context</li>
-      </ul>
-    </div>
-    <div class="feature-card" style="padding: 14px;">
-      <h4 style="font-size: 14px;">Best practices</h4>
-      <ul style="margin-top: 6px; font-size: 13px;">
-        <li><strong>&lt; 200 dòng</strong> / file</li>
-        <li>Cụ thể: <code>"2-space indent"</code> &gt; "format properly"</li>
-        <li><code>/init</code> generate, <code>/memory</code> audit</li>
-        <li><strong>Commit vào git</strong> — team chia sẻ</li>
-      </ul>
+  <p style="margin-top: 8px; color: var(--c-muted); font-size: 13px;">2 hệ bộ nhớ load mỗi session — official Anthropic docs.</p>
+  <div style="display: grid; grid-template-columns: 3fr 2fr; gap: 24px; margin-top: 16px;">
+    <table style="font-size: 12px;">
+      <thead>
+        <tr><th></th><th>CLAUDE.md</th><th>Auto memory</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Ai viết</strong></td><td>Bạn</td><td>Claude</td></tr>
+        <tr><td><strong>Nội dung</strong></td><td>Instructions, rules</td><td>Learnings, patterns</td></tr>
+        <tr><td><strong>Scope</strong></td><td>Project · user · org</td><td>Per repo</td></tr>
+        <tr><td><strong>Load</strong></td><td>Full mỗi session</td><td>First 200 lines / 25KB</td></tr>
+        <tr><td><strong>Dùng cho</strong></td><td>Standards, workflow, architecture</td><td>Build cmds, debug insights</td></tr>
+      </tbody>
+    </table>
+    <div>
+      <div class="feature-card" style="padding: 12px;">
+        <h4 style="font-size: 13px; margin: 0;">Khi nào add CLAUDE.md</h4>
+        <ul style="margin-top: 4px; font-size: 12px; padding-left: 16px;">
+          <li>Claude sai cùng lỗi lần 2</li>
+          <li>Code review bắt</li>
+          <li>Gõ lại cùng correction</li>
+          <li>Teammate mới cần cùng context</li>
+        </ul>
+      </div>
+      <div class="feature-card" style="padding: 12px; margin-top: 10px;">
+        <h4 style="font-size: 13px; margin: 0;">Best practices</h4>
+        <ul style="margin-top: 4px; font-size: 12px; padding-left: 16px;">
+          <li><strong>&lt; 200 dòng</strong> / file</li>
+          <li>Cụ thể: <code>"2-space indent"</code></li>
+          <li><code>/init</code> · <code>/memory</code></li>
+          <li>Commit vào git</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
