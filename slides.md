@@ -1,6 +1,6 @@
 ---
 theme: default
-title: Claude Code Nâng Cao — Orchestration, Skill Stack & Defense
+title: Claude Code for Real Engineer
 info: |
   Seminar 90-120 phút cho engineer chuyển từ Chat sang Agent.
   Design: Anthropic Claude.com — cream canvas + coral CTA + dark navy mockups.
@@ -24,7 +24,7 @@ mdc: true
 <div class="slidev-layout">
   <img src="/img/anthropic-logo.svg" alt="Anthropic" style="height: 28px; margin-bottom: 12px;" />
   <span class="eyebrow">Seminar · Advanced · 90-120 phút</span>
-  <h1>Claude Code Nâng Cao<br/>Orchestration · Skill Stack · Defense</h1>
+  <h1>Claude Code<br/>for Real Engineer</h1>
   <p style="font-size: 22px; margin-top: 24px; color: var(--c-body-strong);">
     Multi-subagent · beads · /loop · design.md · cross-agent skill · cost tier
   </p>
@@ -35,7 +35,7 @@ mdc: true
     <strong>Tuan Hung Nguyen</strong> · 15/6/2026
   </div>
   <p style="margin-top: 96px; font-style: italic; color: var(--c-muted);">
-    "Điểm nghẽn đã dịch từ coding sang mọi thứ xung quanh coding." — Fiona Fung, Director of Engineering, Claude Code · Code w/ Claude SF 2026
+    "Bottleneck đã dịch từ coding sang xung quanh coding." — Fiona Fung, Anthropic
   </p>
 </div>
 
@@ -1212,7 +1212,7 @@ mdc: true
     Use case bạn đang nghĩ tới? Pain point nào trong daily work?
   </p>
   <p style="color: var(--c-on-primary); font-size: 16px; margin-top: 48px; font-style: italic; max-width: 800px;">
-    "Điểm nghẽn đã dịch từ coding sang mọi thứ xung quanh coding."<br/>— Fiona Fung, Director of Engineering, Claude Code · Code w/ Claude SF 2026
+    "Bottleneck đã dịch từ coding sang xung quanh coding."<br/>— Fiona Fung, Anthropic
   </p>
   <h2 style="color: var(--c-on-primary); margin-top: 64px;">Cảm ơn</h2>
 </div>
